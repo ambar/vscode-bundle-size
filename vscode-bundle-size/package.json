@@ -35,12 +35,6 @@
     "esbuild"
   ],
   "contributes": {
-    "commands": [
-      {
-        "command": "bundle-size.helloWorld",
-        "title": "Hello World"
-      }
-    ],
     "configuration": {
       "type": "object",
       "title": "Bundle Size",

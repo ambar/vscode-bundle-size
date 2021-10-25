@@ -65,12 +65,6 @@ export function activate(context: vscode.ExtensionContext) {
     }, 300)
   )
 
-  context.subscriptions.push(
-    vscode.commands.registerCommand('bundle-size.helloWorld', () => {
-      void vscode.window.showInformationMessage('Hello World from Bundle Cost!')
-    })
-  )
-
   vscode.languages.registerHoverProvider(jsLanguageIds, {
     provideHover(document, position) {
       const decorationInfo = documentDecorationInfoMap.get(document)
