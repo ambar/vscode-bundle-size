@@ -12,15 +12,15 @@ Display the bundle size of npm packages.
 
 Preview basic usage:
 
-![preview basic](./vscode-bundle-size/images/preview.png)
+![preview basic](./images/preview.png)
 
 Preview namespace imports:
 
-![preview namespace](./vscode-bundle-size/images/preview-namespace.png)
+![preview namespace](./images/preview-namespace.png)
 
 Preview hover card:
 
-![preview hover](./vscode-bundle-size/images/preview-hover.png)
+![preview hover](./images/preview-hover.png)
 
 ## Requirements
 

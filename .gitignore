@@ -2,6 +2,9 @@ out
 dist
 coverage
 node_modules
+.DS_Store
+
+# vs
+vscode-bundle-size/README.md
 .vscode-test/
 *.vsix
-.DS_Store

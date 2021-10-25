@@ -4,7 +4,6 @@
     "*-size"
   ],
   "scripts": {
-    "prepare": "node scripts/copy-readme.mjs",
     "watch": "tsc -b --watch measure-bundle-size vscode-bundle-size",
     "build": "yarn workspaces run build",
     "lint": "recommended",

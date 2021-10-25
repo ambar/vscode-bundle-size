@@ -53,7 +53,7 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "yarn run build:esbuild --minify",
+    "vscode:prepublish": "cp ../README.md . && yarn run build:esbuild --minify",
     "vspack": "npm i --prod && vsce package",
     "prebuild": "rm -rf out/**",
     "build": "tsc",
