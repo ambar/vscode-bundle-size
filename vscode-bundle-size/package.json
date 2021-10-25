@@ -1,0 +1,73 @@
+{
+  "name": "bundle-size",
+  "displayName": "Bundle Size",
+  "description": "Display the bundle size of npm packages",
+  "version": "1.0.0",
+  "license": "MIT",
+  "publisher": "ambar",
+  "private": true,
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "icon": "./images/measure.png",
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
+  "keywords": [
+    "package",
+    "bundle",
+    "size",
+    "npm",
+    "module",
+    "import",
+    "measure",
+    "esbuild"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "bundle-size.helloWorld",
+        "title": "Hello World"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Bundle Size",
+      "properties": {
+        "bundleSize.cautionSize": {
+          "type": "number",
+          "default": 50,
+          "description": "Size limit in KB, display caution color if exceeded"
+        },
+        "bundleSize.dangerSize": {
+          "type": "number",
+          "default": 100,
+          "description": "Size limit in KB, display danger color if exceeded"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run build",
+    "prebuild": "rm -rf out/**",
+    "build": "tsc",
+    "pretest": "yarn run build && yarn run lint",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "measure-bundle-size": "^1.0.0",
+    "pretty-format": "^27.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.53.0",
+    "typescript": "^4.4.4"
+  }
+}
