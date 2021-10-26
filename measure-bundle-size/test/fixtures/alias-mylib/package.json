@@ -1,0 +1,7 @@
+{
+  "name": "alias-mylib",
+  "private": true,
+  "dependencies": {
+    "pkg-mylib": "*"
+  }
+}

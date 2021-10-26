@@ -1,3 +1,4 @@
+import path from 'path'
 import dedent from 'dedent'
 import {measure} from '../src/measure'
 
@@ -85,6 +86,14 @@ test('debug', async () => {
 test('analyze', async () => {
   // resolved to project root
   const [r] = await measure(`import React from 'react'`, __filename, {
+    stats: 'table',
+  })
+  expect(r.result.stats).toMatchSnapshot()
+})
+
+test('alias in tsconfig', async () => {
+  const [r] = await measure(`import magic from 'pkg-mylib'`, null, {
+    workspaceFolder: path.resolve(__dirname, 'fixtures/alias-mylib'),
     stats: 'table',
   })
   expect(r.result.stats).toMatchSnapshot()

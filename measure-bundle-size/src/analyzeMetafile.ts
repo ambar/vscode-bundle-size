@@ -1,4 +1,4 @@
-import {sep} from 'path'
+import path from 'path'
 import bytes from 'bytes'
 import * as esbuild from 'esbuild'
 
@@ -16,11 +16,11 @@ const groupBy = <T, K = string>(list: T[] = [], fn: (x: T) => K) => {
   return group
 }
 
-const splitModuleName = (path = '') => {
-  const [p1, p2, ...rest] = path.split(sep)
+const splitModuleName = (modulePath = '') => {
+  const [p1, p2, ...rest] = modulePath.split(path.sep)
   return p1.startsWith('@')
-    ? [p1 + '/' + p2, rest.join(sep)]
-    : [p1, [p2, ...rest].join(sep)]
+    ? [p1 + '/' + p2, rest.join(path.sep)]
+    : [p1, [p2, ...rest].join(path.sep)]
 }
 
 const npmDir = 'node_modules'
@@ -39,19 +39,40 @@ export default function analyzeMetafile(data: esbuild.Metafile) {
   for (const [outputName, outputStats] of Object.entries(outputs)) {
     const {entryPoint, inputs, bytes: totalBytes} = outputStats
     const list = Object.entries(inputs).map(([x, {bytesInOutput}]) => {
+      let names: {parent: string; head: string; file: string}
+      let index: number
       if (x === entryPoint) {
-        return {names: ['', x, ''], bytesInOutput}
+        names = {parent: '', head: x, file: ''}
+      } else if ((index = x.indexOf(npmDir)) !== -1) {
+        // handle node modules
+        const parent = x.slice(0, index)
+        const [moduleName, part2] = splitModuleName(
+          x.slice(index + npmDir.length + 1)
+        )
+        names = {parent, head: moduleName, file: part2}
+      } else {
+        // handle alias from tsconfig/jsconfig
+        const reParent = /^((\.\.[/\\])+)/
+        const [part1, parent, _, rest] = x.split(reParent)
+        if (parent) {
+          names = {
+            parent,
+            head: path.dirname(rest),
+            file: path.basename(rest),
+          }
+        } else {
+          names = {
+            parent,
+            head: path.dirname(part1),
+            file: path.basename(part1),
+          }
+        }
       }
-      const index = x.indexOf(npmDir)
-      const parent = x.slice(0, index)
-      const [moduleName, part2] = splitModuleName(
-        x.slice(index + npmDir.length + 1)
-      )
-      return {names: [parent, moduleName, part2], bytesInOutput}
+      return {names, bytesInOutput}
     })
-    const group = groupBy(list, (x) => x.names[0])
+    const group = groupBy(list, (x) => x.names.parent)
     const nameGrouped = [...group].map(([_, entries]) => {
-      return groupBy(entries, (x) => x.names[1])
+      return groupBy(entries, (x) => x.names.head)
       // TODO: show parent dir if needed, alert duplicates
       // return groupBy(entries, (x) => x.names[0] + x.names[1])
     })
@@ -71,7 +92,7 @@ export default function analyzeMetafile(data: esbuild.Metafile) {
     for (const map of nameGrouped) {
       for (const [name, group] of map) {
         const files = group
-          .map((x) => ({name: x.names[2], size: x.bytesInOutput}))
+          .map((x) => ({name: x.names.file, size: x.bytesInOutput}))
           .sort((a, b) => b.size - a.size)
         const bytesAcc = group.reduce((acc, x) => acc + x.bytesInOutput, 0)
         if (bytesAcc === 0) {

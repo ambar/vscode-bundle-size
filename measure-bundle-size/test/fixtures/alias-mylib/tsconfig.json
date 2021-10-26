@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "pkg-mylib": ["../pkg-mylib/main.js"]
+    }
+  }
+}

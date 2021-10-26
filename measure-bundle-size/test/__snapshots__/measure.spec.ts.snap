@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`alias in tsconfig 1`] = `
+"| Input | Files | Size | Percent |
+| --- | --- | --- | --- |
+| \`<bundle>.js\` | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | 29B | 100% |
+| \`↪ pkg-mylib\` | main.js | 9B | 31.0% |"
+`;
+
 exports[`analyze 1`] = `
 "| Input | Files | Size | Percent |
 | --- | --- | --- | --- |
