@@ -49,7 +49,7 @@ const documentDecorationInfoMap = new WeakMap<
 
 let installPromise: ReturnType<typeof install>
 let lastWorkspaceFolder: vscode.WorkspaceFolder | void
-export function activate(context: vscode.ExtensionContext) {
+export function activate(_context: vscode.ExtensionContext) {
   log('Bundle Size is now active!')
   installPromise = install(() => log('downloading esbuild on first use'))
   installPromise.catch(log)
