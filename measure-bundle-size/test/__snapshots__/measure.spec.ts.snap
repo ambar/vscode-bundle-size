@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`add ellipsis for files 1`] = `
+"| Input | Files | Size | Percent |
+| --- | --- | --- | --- |
+| \`<bundle>.js\` |  | 3.48KB | 100% |
+| \`↪ lodash\` | debounce.js (998B), toNumber.js (399B), _getRawTag.js (248B), _baseGetTag.js (201B), _root.js (139B), isSymbol.js (130B), _trimmedEndIndex.js (115B), _baseTrim.js (112B), isObject.js (107B), _objectToString.js (104B), and 4 other files (320B) | 2.81KB | 80.6% |
+| \`↪ <import>\` |  | 16B | 0.4% |"
+`;
+
 exports[`alias in tsconfig 1`] = `
 "| Input | Files | Size | Percent |
 | --- | --- | --- | --- |

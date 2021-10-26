@@ -98,3 +98,11 @@ test('alias in tsconfig', async () => {
   })
   expect(r.result.stats).toMatchSnapshot()
 })
+
+test('add ellipsis for files', async () => {
+  const [r] = await measure(`import debounce from 'lodash/debounce'`, null, {
+    workspaceFolder: __dirname,
+    stats: 'table',
+  })
+  expect(r.result.stats).toMatchSnapshot()
+})
