@@ -9,6 +9,7 @@
     "dist"
   ],
   "scripts": {
+    "prepack": "yarn build",
     "prebuild": "rm -rf dist/**",
     "build": "tsc",
     "build:esbuild": "node scripts/build.mjs && tsc --emitDeclarationOnly",
