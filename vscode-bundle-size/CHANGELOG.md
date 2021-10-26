@@ -1,3 +1,38 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 1.2.0 (2021-10-26)
+
+
+### Bug Fixes
+
+* lazy load esbuild ([91850ba](https://github.com/ambar/vscode-bundle-size/commit/91850ba))
+
+
+### Features
+
+* use workspace root folder as fallback for untitled file ([7787da4](https://github.com/ambar/vscode-bundle-size/commit/7787da4))
+
+
+
+# 1.1.0 (2021-10-25)
+
+
+### Bug Fixes
+
+* change brighter logo ([66f2132](https://github.com/ambar/vscode-bundle-size/commit/66f2132))
+
+
+### Features
+
+* init project ([ade8626](https://github.com/ambar/vscode-bundle-size/commit/ade8626))
+
+
+
+
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
