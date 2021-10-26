@@ -1,0 +1,13 @@
+{
+  "version": "independent",
+  "packages": ["*-size"],
+  "ignoreChanges": [
+    "**/fixtures/**",
+    "**/__tests__/**",
+    "**/test/**",
+    "**/*.md"
+  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "conventionalCommits": true
+}
