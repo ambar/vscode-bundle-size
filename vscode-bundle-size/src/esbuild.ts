@@ -1,0 +1,41 @@
+import {exec} from 'child_process'
+import {promisify} from 'util'
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyFunction<T = void> = (...args: any[]) => T
+
+function safeGet<T>(fn: AnyFunction<T>, defaultValue: T) {
+  try {
+    return fn()
+  } catch (_) {
+    return defaultValue
+  }
+}
+
+const hasEsbuild = () => safeGet(() => !!require.resolve('esbuild'), false)
+const command = promisify(exec)
+
+/**
+ * Get the right native executable of esbuild since it cannot be bundled
+ * consider downloading: https://esbuild.github.io/getting-started/#download-a-build
+ */
+export const install = async (onInstall: AnyFunction) => {
+  if (hasEsbuild()) {
+    return
+  }
+  onInstall()
+  let err: unknown
+  await command('yarn --prod', {cwd: __dirname}).catch((e) => {
+    err = e
+  })
+  if (hasEsbuild()) {
+    return
+  }
+  await command('npm i --prod', {cwd: __dirname}).catch((e) => {
+    err = e
+  })
+  if (hasEsbuild()) {
+    return
+  }
+  return Promise.reject(err)
+}

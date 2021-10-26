@@ -54,8 +54,9 @@
   },
   "scripts": {
     "vscode:prepublish": "cp ../README.md . && yarn run build:esbuild --minify",
-    "vspack": "npm i --prod && vsce package",
+    "vspack": "vsce package --yarn",
     "prebuild": "rm -rf out/**",
+    "watch": "tsc -watch",
     "build": "tsc",
     "build:esbuild": "esbuild --bundle src/extension.ts --outfile=$npm_package_main --format=cjs --platform=node --external:vscode --external:esbuild",
     "pretest": "yarn run build && yarn run lint",
@@ -65,10 +66,10 @@
     "esbuild": "^0.13.5"
   },
   "devDependencies": {
-    "measure-bundle-size": "^1.0.0",
-    "pretty-format": "^27.3.1",
     "@types/node": "^12.11.7",
     "@types/vscode": "^1.53.0",
+    "measure-bundle-size": "^1.0.0",
+    "pretty-format": "^27.3.1",
     "typescript": "^4.4.4"
   }
 }

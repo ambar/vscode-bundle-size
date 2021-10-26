@@ -1,6 +1,7 @@
 import * as vscode from 'vscode'
 import {format} from 'pretty-format'
-import {measure, MeasureResult} from 'measure-bundle-size'
+import type {measure as measureFn, MeasureResult} from 'measure-bundle-size'
+import {install} from './esbuild'
 
 const output = vscode.window.createOutputChannel('Bundle Size')
 
@@ -45,9 +46,14 @@ const documentDecorationInfoMap = new WeakMap<
   vscode.TextDocument,
   DecorationInfo[]
 >()
+
+let installPromise: ReturnType<typeof install>
 let lastWorkspaceFolder: vscode.WorkspaceFolder | void
 export function activate(context: vscode.ExtensionContext) {
   log('Bundle Size is now active!')
+  installPromise = install(() => log('downloading esbuild on first use'))
+  installPromise.catch(log)
+
   // on initial
   void processDocument(vscode.window.activeTextEditor?.document)
   // on file open/close
@@ -131,6 +137,7 @@ async function processDocument(document?: vscode.TextDocument) {
   if (!editor) {
     return
   }
+  await installPromise
 
   // clear console & decoration
   output.clear()
@@ -138,6 +145,10 @@ async function processDocument(document?: vscode.TextDocument) {
   documentDecorationInfoMap.set(document, [])
 
   const {fileName} = document
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const {measure} = require('measure-bundle-size') as {
+    measure: typeof measureFn
+  }
   const results = await measure(document.getText(), fileName, {
     cache: true,
     debug: true,
