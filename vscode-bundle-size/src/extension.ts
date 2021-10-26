@@ -149,12 +149,15 @@ async function processDocument(document?: vscode.TextDocument) {
   const {measure} = require('measure-bundle-size') as {
     measure: typeof measureFn
   }
+  // by default, untitled file will save to `lastWorkspaceFolder`
+  const workspaceFolder =
+    lastWorkspaceFolder || vscode.workspace.workspaceFolders?.[0]
   const results = await measure(document.getText(), fileName, {
     cache: true,
     debug: true,
     stats: 'table',
     log: channelLog,
-    workspaceFolder: lastWorkspaceFolder?.uri.fsPath,
+    workspaceFolder: workspaceFolder?.uri.fsPath,
   }).catch((error) => {
     log('measure:error', error)
     return null
