@@ -58,7 +58,7 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "cp ../README.md . && yarn run build:esbuild --minify",
+    "vscode:prepublish": "yarn prebuild && cp ../README.md . && yarn run build:esbuild --minify",
     "vspack": "vsce package --yarn",
     "prebuild": "rm -rf out/**",
     "watch": "tsc -watch",
