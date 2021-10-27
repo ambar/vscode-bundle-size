@@ -152,8 +152,9 @@ async function processDocument(document?: vscode.TextDocument) {
   // by default, untitled file will save to `lastWorkspaceFolder`
   const workspaceFolder =
     lastWorkspaceFolder || vscode.workspace.workspaceFolders?.[0]
+  const config = vscode.workspace.getConfiguration('bundleSize')
   const results = await measure(document.getText(), fileName, {
-    cache: true,
+    cache: config.get('cache') ?? true,
     debug: true,
     stats: 'table',
     log: channelLog,

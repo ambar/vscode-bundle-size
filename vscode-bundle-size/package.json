@@ -39,6 +39,11 @@
       "type": "object",
       "title": "Bundle Size",
       "properties": {
+        "bundleSize.cache": {
+          "type": "boolean",
+          "default": true,
+          "description": "Wether to cache the bundle result (it's highly recommended to turn on, unless you are debugging or want to edit files in dependences)"
+        },
         "bundleSize.cautionSize": {
           "type": "number",
           "default": 50,
