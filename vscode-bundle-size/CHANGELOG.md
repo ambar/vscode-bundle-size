@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.2.0...bundle-size@1.3.0) (2021-10-29)
+
+
+### Features
+
+* add cache switch ([d20f4c2](https://github.com/ambar/vscode-bundle-size/commit/d20f4c2eca03c22cafd2fd19b187b81d8315a3b2))
+
+
+
+
+
 # 1.2.0 (2021-10-26)
 
 ### Features
