@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.3.0...bundle-size@1.3.1) (2021-11-08)
+
+
+### Bug Fixes
+
+* use file protocal for package file ([c6cae8e](https://github.com/ambar/vscode-bundle-size/commit/c6cae8e2d888a6e6c1e1c383e077ee8581a51cc0))
+
+
+
+
+
 # [1.3.0](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.2.0...bundle-size@1.3.0) (2021-10-29)
 
 
