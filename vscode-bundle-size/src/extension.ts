@@ -1,3 +1,4 @@
+import path from 'path'
 import * as vscode from 'vscode'
 import {format} from 'pretty-format'
 import type {measure as measureFn, MeasureResult} from 'measure-bundle-size'
@@ -91,11 +92,12 @@ export function activate(_context: vscode.ExtensionContext) {
           return {contents: [`Bundle Error:${pb} ${format(error)}`]}
         } else if (result) {
           const {pkgFile, pkg, stats} = result
+          const pkgUri = vscode.Uri.file(path.resolve(pkgFile))
           const info = [
             // headline
             [
               `${pkg.name}&commat;${pkg.version}`,
-              `[package.json](<${pkgFile}>)`,
+              `[package.json](<${String(pkgUri)}>)`,
               pkg.homepage && `${pkg.homepage}`,
               pkg.description && pkg.description.length < 30 && pkg.description,
             ]
