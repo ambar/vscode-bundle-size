@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.3.1...bundle-size@1.4.0) (2022-01-20)
+
+
+### Features
+
+* add color config ([d3c5971](https://github.com/ambar/vscode-bundle-size/commit/d3c5971))
+
+
+
+
+
 ## [1.3.1](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.3.0...bundle-size@1.3.1) (2021-11-08)
 
 
