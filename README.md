@@ -30,6 +30,11 @@ Because this extension builds locally, you need to pre-install dependencies.
 
 ```jsonc
 {
+  "bundleSize.cache": {
+    "type": "boolean",
+    "default": true,
+    "description": "Wether to cache the bundle result (it's highly recommended to turn on, unless you are debugging or want to edit files in dependencies)"
+  },
   "bundleSize.cautionSize": {
     "type": "number",
     "default": 50,
@@ -39,6 +44,21 @@ Because this extension builds locally, you need to pre-install dependencies.
     "type": "number",
     "default": 100,
     "description": "Size limit in KB, display danger color if exceeded"
+  },
+  "bundleSize.infoColor": {
+    "type": "string",
+    "default": "#090",
+    "description": "Info (default) color for the size text"
+  },
+  "bundleSize.cautionColor": {
+    "type": "string",
+    "default": "#ea0",
+    "description": "Caution color for the size text"
+  },
+  "bundleSize.dangerColor": {
+    "type": "string",
+    "default": "#e33",
+    "description": "Danger color for the size text"
   }
 }
 ```

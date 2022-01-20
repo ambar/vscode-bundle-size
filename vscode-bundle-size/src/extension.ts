@@ -17,11 +17,11 @@ const getColor = (size: number) => {
   const config = vscode.workspace.getConfiguration('bundleSize')
   const sizeKB = size / 1024
   if (sizeKB >= config.dangerSize) {
-    return '#e33'
+    return config.dangerColor as string
   } else if (sizeKB >= config.cautionSize) {
-    return '#ea0'
+    return config.cautionColor as string
   }
-  return '#090'
+  return config.infoColor as string
 }
 
 const channelLog: AnyVoidFunction = (...args) => {
