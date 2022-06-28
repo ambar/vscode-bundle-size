@@ -33,7 +33,7 @@ Because this extension builds locally, you need to pre-install dependencies.
   "bundleSize.cache": {
     "type": "boolean",
     "default": true,
-    "description": "Wether to cache the bundle result (it's highly recommended to turn on, unless you are debugging or want to edit files in dependencies)"
+    "description": "Whether to cache the bundle result (it's highly recommended to turn on, unless you are debugging or want to edit files in dependencies)"
   },
   "bundleSize.cautionSize": {
     "type": "number",
