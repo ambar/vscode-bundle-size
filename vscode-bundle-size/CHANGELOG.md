@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.4.0...bundle-size@1.4.1) (2022-06-28)
+
+
+### Bug Fixes
+
+* fix typo ([#6](https://github.com/ambar/vscode-bundle-size/issues/6)) ([2898ede](https://github.com/ambar/vscode-bundle-size/commit/2898ede5ede598a5564cac302cae40c5477b55ad))
+
+
+
+
+
 # [1.4.0](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.3.1...bundle-size@1.4.0) (2022-01-20)
 
 
