@@ -90,6 +90,6 @@
     "@types/vscode": "^1.53.0",
     "measure-bundle-size": "^1.1.1",
     "pretty-format": "^27.3.1",
-    "typescript": "^4.4.4"
+    "typescript": "^4.8.4"
   }
 }

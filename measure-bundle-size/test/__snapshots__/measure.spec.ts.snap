@@ -40,6 +40,8 @@ Array [
         "size": "22B",
         "zippedSize": "42B",
       },
+      "modulePkg": undefined,
+      "modulePkgFile": undefined,
       "pkg": Object {
         "dependencies": undefined,
         "description": "Centering inline element",
@@ -76,6 +78,8 @@ Array [
         "size": "2.15KB",
         "zippedSize": "936B",
       },
+      "modulePkg": undefined,
+      "modulePkgFile": undefined,
       "pkg": Object {
         "dependencies": undefined,
         "description": "A best-practices CSS foundation",
@@ -102,6 +106,8 @@ Array [
         "size": "529B",
         "zippedSize": "357B",
       },
+      "modulePkg": undefined,
+      "modulePkgFile": undefined,
       "pkg": Object {
         "dependencies": undefined,
         "description": "A best-practices CSS foundation",
@@ -139,6 +145,8 @@ Array [
         "size": "0B",
         "zippedSize": "0B",
       },
+      "modulePkg": undefined,
+      "modulePkgFile": undefined,
       "pkg": Object {
         "dependencies": Object {},
         "description": "Modern JavaScript date utility library",
@@ -185,6 +193,8 @@ Array [
         "size": "0B",
         "zippedSize": "0B",
       },
+      "modulePkg": undefined,
+      "modulePkgFile": undefined,
       "pkg": Object {
         "dependencies": Object {},
         "description": "Modern JavaScript date utility library",
@@ -229,6 +239,8 @@ Array [
         "size": "869B",
         "zippedSize": "506B",
       },
+      "modulePkg": undefined,
+      "modulePkgFile": undefined,
       "pkg": Object {
         "dependencies": Object {},
         "description": "Modern JavaScript date utility library",
@@ -285,6 +297,8 @@ Array [
         "size": "2.43KB",
         "zippedSize": "1.13KB",
       },
+      "modulePkg": undefined,
+      "modulePkgFile": undefined,
       "pkg": Object {
         "dependencies": Object {},
         "description": "Modern JavaScript date utility library",
@@ -321,6 +335,8 @@ Array [
         "size": "71.71KB",
         "zippedSize": "25.91KB",
       },
+      "modulePkg": undefined,
+      "modulePkgFile": undefined,
       "pkg": Object {
         "dependencies": undefined,
         "description": "Lodash modular utilities.",
@@ -357,6 +373,8 @@ Array [
         "size": "7.67KB",
         "zippedSize": "3.21KB",
       },
+      "modulePkg": undefined,
+      "modulePkgFile": undefined,
       "pkg": Object {
         "dependencies": Object {
           "loose-envify": "^1.1.0",
@@ -396,6 +414,8 @@ Array [
         "size": "637B",
         "zippedSize": "372B",
       },
+      "modulePkg": undefined,
+      "modulePkgFile": undefined,
       "pkg": Object {
         "dependencies": undefined,
         "description": "Get aliases",
@@ -432,6 +452,8 @@ Array [
         "size": "21.1KB",
         "zippedSize": "8.29KB",
       },
+      "modulePkg": undefined,
+      "modulePkgFile": undefined,
       "pkg": Object {
         "dependencies": undefined,
         "description": "Lodash modular utilities.",
@@ -492,4 +514,11 @@ Array [
     "result": undefined,
   },
 ]
+`;
+
+exports[`no package.json in exports 1`] = `
+"| Input | Files | Size | Percent |
+| --- | --- | --- | --- |
+| \`<bundle>.js\` |  | 308B | 100% |
+| \`↪ escalade\` | dist/index.mjs | 285B | 92.5% |"
 `;

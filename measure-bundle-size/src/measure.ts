@@ -2,12 +2,12 @@ import {promises as fs} from 'fs'
 import path from 'path'
 import bytes from 'bytes'
 import Debug from 'debug'
-import escalade from 'escalade'
 import gzipSize from 'gzip-size'
 import * as esbuild from 'esbuild'
-import {builtinModules, createRequire} from 'module'
+import {builtinModules} from 'module'
 import {parse, ImportInfo, exportImported} from './parse'
 import analyzeMetafile from './analyzeMetafile'
+import {findPkg, findPkgs, Pkg} from './findPkg'
 
 const log = Debug('measure-bundle-size')
 
@@ -16,14 +16,6 @@ export const hasFile = async (file: string) =>
 
 export const pick = <T>(obj: T, keys: (keyof T)[]) =>
   keys.reduce((acc, k) => ((acc[k] = obj[k]), acc), {} as T)
-
-const findPkg = (file: string) => {
-  return escalade(file, (_, names) => {
-    if (names.includes('package.json')) {
-      return 'package.json'
-    }
-  })
-}
 
 const reBuiltin = RegExp(`^node:|^(${builtinModules.join('|')})(/|$)`)
 /** ignore nested core modules  */
@@ -85,24 +77,16 @@ const peerExternalPlugin: esbuild.Plugin = {
   },
 }
 
-type Pkg = {
-  name: string
-  version: string
-  description?: string
-  homepage?: string
-  repository?: string
-  dependencies?: Record<string, string>
-  peerDependencies?: Record<string, string>
-}
-
 type StatsOpt = boolean | 'tree' | 'table'
 
 type BundleResult = {
   size: number
   zippedSize: number
   human: {size: string; zippedSize: string}
-  pkg: Pkg
-  pkgFile: string
+  pkg?: Pkg
+  pkgFile?: string
+  modulePkg?: Pkg
+  modulePkgFile?: string
   stats?: string
 }
 
@@ -130,6 +114,17 @@ const timeMark = <T extends string>() => {
   }
 }
 
+const pickPkgFields = (pkg: Pkg) => {
+  return pick<Pkg>(pkg, [
+    'name',
+    'version',
+    'description',
+    'homepage',
+    'dependencies',
+    'peerDependencies',
+  ])
+}
+
 const bundle = async (
   statement: string,
   importInfo: ImportInfo,
@@ -147,7 +142,7 @@ const bundle = async (
 ): Promise<BundleResult> => {
   const bundleMark = timeMark<'bundle' | 'zip' | 'analyze'>()
   const modulePath = importInfo.from
-  const [part1, part2] = modulePath.split('/')
+  const [part1] = modulePath.split('/')
   if (!/^[a-z@]/.test(part1)) {
     // file path, alias
     throw new Error('Skip non-npm packages')
@@ -156,13 +151,18 @@ const bundle = async (
     throw new Error('Skip builtin modules')
   }
   const entryInput = `${statement}\n${exportImported(importInfo)}`
-  const moduleName = part1.startsWith('@') ? `${part1}/${part2}` : part1
-  // ignore nested package.json as it is unclear
-  const contextRequire = createRequire(path.resolve(baseDir, '<import>.js'))
-  const pkgFile = contextRequire.resolve(`${moduleName}/package.json`)
-  const rawPkg = contextRequire(pkgFile) as Pkg
+  type T = Awaited<ReturnType<typeof findPkgs>>
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const {rootPkgFile, rootPkg, modulePkgFile, modulePkg} = await findPkgs(
+    modulePath,
+    baseDir
+  ).catch(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return
+    return {} as T
+  })
 
-  const cacheKey = cacheOpt && genCacheKey(rawPkg, entryInput)
+  const cacheKey =
+    cacheOpt && rootPkg !== undefined && genCacheKey(rootPkg, entryInput)
   if (cacheOpt && cacheKey) {
     const cache = bundleCache.get(cacheKey)
     if (cache) {
@@ -171,18 +171,10 @@ const bundle = async (
     }
   }
 
-  const pkg = pick<Pkg>(rawPkg, [
-    'name',
-    'version',
-    'description',
-    'homepage',
-    'dependencies',
-    'peerDependencies',
-  ])
   bundleMark.start('bundle')
   // TODO: alert indirect deps, eg.: react-redux > react-dom
   // exclude peer deps, eg: react-router-dom > react
-  const external = Object.keys({...pkg.peerDependencies})
+  const external = rootPkg ? Object.keys({...rootPkg.peerDependencies}) : []
   // reduce depth of relative path in `metafile`, can't resolve directly to `node_modules` because it may not exist (or in monorepo)
   const workingDir = projectPkgFile ? path.dirname(projectPkgFile) : baseDir
   /**
@@ -248,12 +240,15 @@ const bundle = async (
   }
   const human = {size: bytes(size), zippedSize: bytes(zippedSize)}
   log(`${bundleMark.print()}, ${statement}, ${human.size}`)
+  const toRelative = path.relative.bind(null, process.cwd())
   const result = {
     size,
     zippedSize,
     human,
-    pkg,
-    pkgFile: path.relative(process.cwd(), pkgFile),
+    pkg: rootPkg ? pickPkgFields(rootPkg) : undefined,
+    pkgFile: rootPkgFile ? toRelative(rootPkgFile) : undefined,
+    modulePkg: modulePkg ? pickPkgFields(modulePkg) : undefined,
+    modulePkgFile: modulePkgFile ? toRelative(modulePkgFile) : undefined,
     stats,
   }
   if (cacheOpt && cacheKey) {

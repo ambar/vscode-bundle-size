@@ -92,25 +92,29 @@ export function activate(_context: vscode.ExtensionContext) {
           return {contents: [`Bundle Error:${pb} ${format(error)}`]}
         } else if (result) {
           const {pkgFile, pkg, stats} = result
-          const pkgUri = vscode.Uri.file(path.resolve(pkgFile))
-          const info = [
-            // headline
-            [
-              `${pkg.name}&commat;${pkg.version}`,
-              `[package.json](<${String(pkgUri)}>)`,
-              pkg.homepage && `${pkg.homepage}`,
-              pkg.description && pkg.description.length < 30 && pkg.description,
-            ]
-              .filter(Boolean)
-              .join(' | ') + lb,
-          ]
-            .filter(Boolean)
-            .join('')
+          const pkgUri = pkgFile && vscode.Uri.file(path.resolve(pkgFile))
+          const info = pkg
+            ? [
+                // headline
+                [
+                  pkg.name && `${pkg.name}&commat;${pkg.version}`,
+                  pkgUri && `[package.json](<${String(pkgUri)}>)`,
+                  pkg.homepage && `${pkg.homepage}`,
+                  pkg.description &&
+                    pkg.description.length < 30 &&
+                    pkg.description,
+                ]
+                  .filter(Boolean)
+                  .join(' | ') + lb,
+              ]
+                .filter(Boolean)
+                .join('')
+            : ''
           return {
             contents: [
               info,
               stats,
-              block(JSON.stringify(pkg, null, '  '), 'json'),
+              pkg && block(JSON.stringify(pkg, null, '  '), 'json'),
             ].filter(Boolean) as string[],
           }
         }
@@ -161,7 +165,7 @@ async function processDocument(document?: vscode.TextDocument) {
     stats: 'table',
     log: channelLog,
     workspaceFolder: workspaceFolder?.uri.fsPath,
-  }).catch((error) => {
+  }).catch((error: Error) => {
     log('measure:error', error)
     return null
   })

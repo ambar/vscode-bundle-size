@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import path from 'path'
 import dedent from 'dedent'
 import {measure} from '../src/measure'
@@ -88,7 +89,7 @@ test('analyze', async () => {
   const [r] = await measure(`import React from 'react'`, __filename, {
     stats: 'table',
   })
-  expect(r.result.stats).toMatchSnapshot()
+  expect(r.result!.stats).toMatchSnapshot()
 })
 
 test('alias in tsconfig', async () => {
@@ -96,7 +97,7 @@ test('alias in tsconfig', async () => {
     workspaceFolder: path.resolve(__dirname, 'fixtures/alias-mylib'),
     stats: 'table',
   })
-  expect(r.result.stats).toMatchSnapshot()
+  expect(r.result!.stats).toMatchSnapshot()
 })
 
 test('add ellipsis for files', async () => {
@@ -104,5 +105,13 @@ test('add ellipsis for files', async () => {
     workspaceFolder: __dirname,
     stats: 'table',
   })
-  expect(r.result.stats).toMatchSnapshot()
+  expect(r.result!.stats).toMatchSnapshot()
+})
+
+test('no package.json in exports', async () => {
+  const [r] = await measure(`import escalade from 'escalade'`, null, {
+    workspaceFolder: __dirname,
+    stats: 'table',
+  })
+  expect(r.result!.stats).toMatchSnapshot()
 })
