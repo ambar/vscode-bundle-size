@@ -83,7 +83,7 @@
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
-    "esbuild": "^0.13.5"
+    "esbuild": "^0.15.12"
   },
   "devDependencies": {
     "@types/node": "^12.11.7",

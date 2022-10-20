@@ -3,9 +3,9 @@
 exports[`add ellipsis for files 1`] = `
 "| Input | Files | Size | Percent |
 | --- | --- | --- | --- |
-| \`<bundle>.js\` |  | 3.48KB | 100% |
-| \`↪ lodash\` | debounce.js (998B), toNumber.js (399B), _getRawTag.js (248B), _baseGetTag.js (201B), _root.js (139B), isSymbol.js (130B), _trimmedEndIndex.js (115B), _baseTrim.js (112B), isObject.js (107B), _objectToString.js (104B), and 4 other files (320B) | 2.81KB | 80.6% |
-| \`↪ <import>\` |  | 16B | 0.4% |"
+| \`<bundle>.js\` |  | 3.41KB | 100% |
+| \`↪ lodash\` | debounce.js (998B), toNumber.js (399B), _getRawTag.js (245B), _baseGetTag.js (201B), _root.js (139B), isSymbol.js (130B), _trimmedEndIndex.js (115B), _baseTrim.js (112B), isObject.js (107B), _objectToString.js (104B), and 4 other files (320B) | 2.8KB | 82.3% |
+| \`↪ <import>\` |  | 16B | 0.5% |"
 `;
 
 exports[`alias in tsconfig 1`] = `
@@ -18,10 +18,10 @@ exports[`alias in tsconfig 1`] = `
 exports[`analyze 1`] = `
 "| Input | Files | Size | Percent |
 | --- | --- | --- | --- |
-| \`<bundle>.js\` |  | 7.74KB | 100% |
-| \`↪ react\` | cjs/react.production.min.js (5.82KB), index.js (46B) | 5.87KB | 75.8% |
-| \`↪ object-assign\` | index.js | 959B | 12.1% |
-| \`↪ <import>\` |  | 15B | 0.2% |"
+| \`<bundle>.js\` |  | 7.67KB | 100% |
+| \`↪ react\` | cjs/react.production.min.js (5.82KB), index.js (46B) | 5.87KB | 76.5% |
+| \`↪ object-assign\` | index.js | 956B | 12.2% |
+| \`↪ <import>\` |  | 14B | 0.2% |"
 `;
 
 exports[`measure "
@@ -226,8 +226,8 @@ Array [
     },
     "result": Object {
       "human": Object {
-        "size": "878B",
-        "zippedSize": "512B",
+        "size": "869B",
+        "zippedSize": "506B",
       },
       "pkg": Object {
         "dependencies": Object {},
@@ -238,9 +238,9 @@ Array [
         "version": "2.17.0",
       },
       "pkgFile": "node_modules/date-fns/package.json",
-      "size": 878,
+      "size": 869,
       "stats": undefined,
-      "zippedSize": 512,
+      "zippedSize": 506,
     },
   },
 ]
@@ -282,8 +282,8 @@ Array [
     },
     "result": Object {
       "human": Object {
-        "size": "2.44KB",
-        "zippedSize": "1.14KB",
+        "size": "2.43KB",
+        "zippedSize": "1.13KB",
       },
       "pkg": Object {
         "dependencies": Object {},
@@ -294,9 +294,9 @@ Array [
         "version": "2.17.0",
       },
       "pkgFile": "node_modules/date-fns/package.json",
-      "size": 2498,
+      "size": 2489,
       "stats": undefined,
-      "zippedSize": 1169,
+      "zippedSize": 1162,
     },
   },
 ]
@@ -318,8 +318,8 @@ Array [
     },
     "result": Object {
       "human": Object {
-        "size": "71.8KB",
-        "zippedSize": "25.94KB",
+        "size": "71.71KB",
+        "zippedSize": "25.91KB",
       },
       "pkg": Object {
         "dependencies": undefined,
@@ -330,9 +330,9 @@ Array [
         "version": "4.17.21",
       },
       "pkgFile": "node_modules/lodash/package.json",
-      "size": 73520,
+      "size": 73432,
       "stats": undefined,
-      "zippedSize": 26566,
+      "zippedSize": 26531,
     },
   },
 ]
@@ -354,8 +354,8 @@ Array [
     },
     "result": Object {
       "human": Object {
-        "size": "7.74KB",
-        "zippedSize": "3.23KB",
+        "size": "7.67KB",
+        "zippedSize": "3.21KB",
       },
       "pkg": Object {
         "dependencies": Object {
@@ -369,9 +369,9 @@ Array [
         "version": "17.0.2",
       },
       "pkgFile": "node_modules/react/package.json",
-      "size": 7929,
+      "size": 7851,
       "stats": undefined,
-      "zippedSize": 3306,
+      "zippedSize": 3288,
     },
   },
 ]
@@ -393,8 +393,8 @@ Array [
     },
     "result": Object {
       "human": Object {
-        "size": "710B",
-        "zippedSize": "393B",
+        "size": "637B",
+        "zippedSize": "372B",
       },
       "pkg": Object {
         "dependencies": undefined,
@@ -405,9 +405,9 @@ Array [
         "version": "0.0.0",
       },
       "pkgFile": "node_modules/@ambarli/alias/package.json",
-      "size": 710,
+      "size": 637,
       "stats": undefined,
-      "zippedSize": 393,
+      "zippedSize": 372,
     },
   },
 ]
@@ -429,8 +429,8 @@ Array [
     },
     "result": Object {
       "human": Object {
-        "size": "21.22KB",
-        "zippedSize": "8.33KB",
+        "size": "21.1KB",
+        "zippedSize": "8.29KB",
       },
       "pkg": Object {
         "dependencies": undefined,
@@ -441,9 +441,9 @@ Array [
         "version": "4.17.21",
       },
       "pkgFile": "node_modules/lodash/package.json",
-      "size": 21725,
+      "size": 21611,
       "stats": undefined,
-      "zippedSize": 8526,
+      "zippedSize": 8489,
     },
   },
 ]
