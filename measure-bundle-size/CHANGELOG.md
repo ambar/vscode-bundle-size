@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/ambar/vscode-bundle-size/compare/measure-bundle-size@1.2.0...measure-bundle-size@1.3.0) (2023-12-23)
+
+### Features
+
+- add and use lazy async generator API ([977a67e](https://github.com/ambar/vscode-bundle-size/commit/977a67ed0f1e7059a992e8fd4b6e88801919556c))
+- upgrade esbuild to 0.19.10 ([e18b0dd](https://github.com/ambar/vscode-bundle-size/commit/e18b0dd2bf9659df1e1ae0330274c6d35adea367))
+
 # [1.2.0](https://github.com/ambar/vscode-bundle-size/compare/measure-bundle-size@1.1.1...measure-bundle-size@1.2.0) (2022-10-20)
 
 ### Features
