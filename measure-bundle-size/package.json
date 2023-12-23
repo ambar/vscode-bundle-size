@@ -1,6 +1,7 @@
 {
   "name": "measure-bundle-size",
   "version": "1.2.0",
+  "repository": "ambar/vscode-bundle-size",
   "source": "src/index.ts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

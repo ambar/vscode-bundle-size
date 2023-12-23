@@ -9,7 +9,7 @@ import {parse, ImportInfo, exportImported} from './parse'
 import analyzeMetafile from './analyzeMetafile'
 import {findPkg, findPkgs, Pkg} from './findPkg'
 
-const log = Debug('measure-bundle-size')
+const logger = Debug('measure-bundle-size')
 
 export const hasFile = async (file: string) =>
   Boolean(await fs.stat(file).catch(() => null))
@@ -71,7 +71,7 @@ const peerExternalPlugin: esbuild.Plugin = {
     )
     build.onEnd(() => {
       if (externalsMap.size) {
-        log(`peer externals`, externalsMap)
+        logger(`peer externals`, externalsMap)
       }
     })
   },
@@ -166,7 +166,7 @@ const bundle = async (
   if (cacheOpt && cacheKey) {
     const cache = bundleCache.get(cacheKey)
     if (cache) {
-      log('using cache:', importInfo.from)
+      logger('using cache:', importInfo.from)
       return cache
     }
   }
@@ -239,7 +239,7 @@ const bundle = async (
     zippedSize += s2
   }
   const human = {size: bytes(size), zippedSize: bytes(zippedSize)}
-  log(`${bundleMark.print()}, ${statement}, ${human.size}`)
+  logger(`${bundleMark.print()}, ${statement}, ${human.size}`)
   const toRelative = path.relative.bind(null, process.cwd())
   const result = {
     size,
@@ -257,6 +257,15 @@ const bundle = async (
   return result
 }
 
+const withValue = async <T>(valueFn: () => Promise<T>) => {
+  try {
+    const r = await valueFn()
+    return <const>[void 0, r]
+  } catch (err) {
+    return <const>[err, void 0]
+  }
+}
+
 export type MeasureResult = {
   importInfo: ImportInfo
   result?: BundleResult
@@ -264,32 +273,51 @@ export type MeasureResult = {
 }
 
 type MeasureOptions = {
+  /**
+   * whether to enable debug log
+   * @default false
+   */
   debug?: boolean
+  /**
+   * the format of stats
+   */
   stats?: StatsOpt
+  /**
+   * whether to cache bundle result
+   * @default false
+   */
   cache?: boolean
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  log?: (...args: any[]) => void
+  /**
+   * custom log function
+   */
+  log?: Debug.Debugger['log']
+  /**
+   * the path of the workspace folder
+   */
   workspaceFolder?: string
 }
 
-export const measure = async (
+/**
+ * Measure the bundle size of each import statement
+ */
+export async function* measureIterable(
   input: string,
   fileName?: string | null,
-  opts: MeasureOptions = {}
-): Promise<MeasureResult[]> => {
-  if (opts.debug) {
-    log.enabled = true
+  {debug, log, stats, cache, workspaceFolder}: MeasureOptions = {}
+): AsyncGenerator<MeasureResult> {
+  if (debug) {
+    logger.enabled = true
   }
-  if (opts.log) {
-    log.log = opts.log
+  if (log) {
+    logger.log = log
   }
 
-  log('process', fileName)
+  logger('process', fileName)
   const baseDir =
     fileName && (await hasFile(fileName))
       ? path.dirname(fileName)
-      : opts.workspaceFolder && (await hasFile(opts.workspaceFolder))
-      ? opts.workspaceFolder
+      : workspaceFolder && (await hasFile(workspaceFolder))
+      ? workspaceFolder
       : null
   if (!baseDir) {
     throw new Error('Can not resolve `fileName` or `workspaceFolder`')
@@ -300,28 +328,30 @@ export const measure = async (
   parseMark.start('parse')
   const result = parse(input)
   parseMark.end('parse')
-  log(parseMark.print())
-  const bundleOpts = {
-    baseDir,
-    projectPkgFile,
-    stats: opts.stats,
-    cache: opts.cache,
+  logger(parseMark.print())
+
+  const bundleOpts = {baseDir, projectPkgFile, stats, cache}
+  for (const importInfo of result.imports) {
+    const statement = input.substring(importInfo.start, importInfo.end)
+    // await new Promise((resolve) => setTimeout(resolve, 500))
+    const [error, result] = await withValue(() =>
+      bundle(statement, importInfo, bundleOpts)
+    )
+    yield {importInfo, result, error}
   }
-  return Promise.all(
-    result.imports.map(async (importInfo) => {
-      const statement = input.substring(importInfo.start, importInfo.end)
-      return bundle(statement, importInfo, bundleOpts).then(
-        (result) => ({
-          importInfo,
-          result,
-          error: void 0,
-        }),
-        (error: Error) => ({
-          importInfo,
-          result: void 0,
-          error,
-        })
-      )
-    })
-  )
+}
+
+/**
+ * Measure the bundle size of each import statement
+ */
+export const measure = async (
+  input: string,
+  fileName?: string | null,
+  opts: MeasureOptions = {}
+): Promise<MeasureResult[]> => {
+  const results: MeasureResult[] = []
+  for await (const result of measureIterable(input, fileName, opts)) {
+    results.push(result)
+  }
+  return results
 }

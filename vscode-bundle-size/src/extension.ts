@@ -1,7 +1,7 @@
 import path from 'path'
 import * as vscode from 'vscode'
 import {format} from 'pretty-format'
-import type {measure as measureFn, MeasureResult} from 'measure-bundle-size'
+import type * as mbs from 'measure-bundle-size'
 import {install} from './esbuild'
 
 const output = vscode.window.createOutputChannel('Bundle Size')
@@ -40,7 +40,7 @@ const log: AnyVoidFunction = (...args) => {
 type AnyVoidFunction = (...args: any[]) => void
 
 type DecorationInfo = {
-  measure: MeasureResult
+  measure: mbs.MeasureResult
   decoration: vscode.DecorationOptions
 }
 const documentDecorationInfoMap = new WeakMap<
@@ -82,7 +82,7 @@ export function activate(_context: vscode.ExtensionContext) {
         x.decoration.range.contains(position)
       )
       if (info) {
-        const {result, error} = info.measure
+        const {result, error}: mbs.MeasureResult = info.measure
         // line break or para break: https://github.com/microsoft/vscode/issues/86291#issuecomment-561841915
         const lb = '  \n'
         const pb = '\n\n'
@@ -144,6 +144,9 @@ async function processDocument(document?: vscode.TextDocument) {
     return
   }
   await installPromise
+  if (editor !== vscode.window.activeTextEditor) {
+    return
+  }
 
   // clear console & decoration
   output.clear()
@@ -152,29 +155,25 @@ async function processDocument(document?: vscode.TextDocument) {
 
   const {fileName} = document
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const {measure} = require('measure-bundle-size') as {
-    measure: typeof measureFn
+  const {measureIterable} = require('measure-bundle-size') as {
+    measureIterable: typeof mbs.measureIterable
   }
   // by default, untitled file will save to `lastWorkspaceFolder`
   const workspaceFolder =
     lastWorkspaceFolder || vscode.workspace.workspaceFolders?.[0]
   const config = vscode.workspace.getConfiguration('bundleSize')
-  const results = await measure(document.getText(), fileName, {
+
+  const decorationInfo: DecorationInfo[] = []
+  for await (const measure of measureIterable(document.getText(), fileName, {
     cache: config.get('cache') ?? true,
     debug: true,
     stats: 'table',
     log: channelLog,
     workspaceFolder: workspaceFolder?.uri.fsPath,
-  }).catch((error: Error) => {
-    log('measure:error', error)
-    return null
-  })
-  if (!results || editor !== vscode.window.activeTextEditor) {
-    return
-  }
-
-  const decorationInfo: DecorationInfo[] = []
-  for (const measure of results) {
+  })) {
+    if (editor !== vscode.window.activeTextEditor) {
+      break
+    }
     const {importInfo, result, error} = measure
     if (result) {
       const pos = editor.document.positionAt(importInfo.end)
@@ -184,20 +183,17 @@ async function processDocument(document?: vscode.TextDocument) {
         renderOptions: {after: {contentText, color: getColor(result.size)}},
       }
       decorationInfo.push({decoration, measure})
+      editor.setDecorations(
+        decorationType,
+        decorationInfo.map((x) => x.decoration)
+      )
+      documentDecorationInfoMap.set(document, decorationInfo)
     } else {
       // show error in editor?
       if (!/Skip/.test((error as Error)?.message)) {
         log('exception', measure.importInfo.from, error)
       }
     }
-  }
-
-  if (decorationInfo.length) {
-    editor.setDecorations(
-      decorationType,
-      decorationInfo.map((x) => x.decoration)
-    )
-    documentDecorationInfoMap.set(document, decorationInfo)
   }
 }
 
