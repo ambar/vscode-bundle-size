@@ -18,9 +18,9 @@ exports[`alias in tsconfig 1`] = `
 exports[`analyze 1`] = `
 "| Input | Files | Size | Percent |
 | --- | --- | --- | --- |
-| \`<bundle>.js\` |  | 7.67KB | 100% |
-| \`↪ react\` | cjs/react.production.min.js (5.82KB), index.js (46B) | 5.87KB | 76.5% |
-| \`↪ object-assign\` | index.js | 956B | 12.2% |
+| \`<bundle>.js\` |  | 7.79KB | 100% |
+| \`↪ react\` | cjs/react.production.min.js (5.82KB), index.js (46B) | 5.87KB | 75.3% |
+| \`↪ object-assign\` | index.js | 956B | 12.0% |
 | \`↪ <import>\` |  | 14B | 0.2% |"
 `;
 
@@ -75,8 +75,8 @@ Array [
     },
     "result": Object {
       "human": Object {
-        "size": "2.15KB",
-        "zippedSize": "936B",
+        "size": "2.13KB",
+        "zippedSize": "923B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -89,9 +89,9 @@ Array [
         "version": "13.0.0",
       },
       "pkgFile": "node_modules/sanitize.css/package.json",
-      "size": 2203,
+      "size": 2185,
       "stats": undefined,
-      "zippedSize": 936,
+      "zippedSize": 923,
     },
   },
   Object {
@@ -103,8 +103,8 @@ Array [
     },
     "result": Object {
       "human": Object {
-        "size": "529B",
-        "zippedSize": "357B",
+        "size": "525B",
+        "zippedSize": "355B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -117,9 +117,9 @@ Array [
         "version": "13.0.0",
       },
       "pkgFile": "node_modules/sanitize.css/package.json",
-      "size": 529,
+      "size": 525,
       "stats": undefined,
-      "zippedSize": 357,
+      "zippedSize": 355,
     },
   },
 ]
@@ -295,7 +295,7 @@ Array [
     "result": Object {
       "human": Object {
         "size": "2.43KB",
-        "zippedSize": "1.13KB",
+        "zippedSize": "1.14KB",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -310,7 +310,7 @@ Array [
       "pkgFile": "node_modules/date-fns/package.json",
       "size": 2489,
       "stats": undefined,
-      "zippedSize": 1162,
+      "zippedSize": 1166,
     },
   },
 ]
@@ -332,8 +332,8 @@ Array [
     },
     "result": Object {
       "human": Object {
-        "size": "71.71KB",
-        "zippedSize": "25.91KB",
+        "size": "71.78KB",
+        "zippedSize": "26.1KB",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -346,9 +346,9 @@ Array [
         "version": "4.17.21",
       },
       "pkgFile": "node_modules/lodash/package.json",
-      "size": 73432,
+      "size": 73500,
       "stats": undefined,
-      "zippedSize": 26531,
+      "zippedSize": 26730,
     },
   },
 ]
@@ -370,8 +370,8 @@ Array [
     },
     "result": Object {
       "human": Object {
-        "size": "7.67KB",
-        "zippedSize": "3.21KB",
+        "size": "7.79KB",
+        "zippedSize": "3.25KB",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -387,9 +387,9 @@ Array [
         "version": "17.0.2",
       },
       "pkgFile": "node_modules/react/package.json",
-      "size": 7851,
+      "size": 7974,
       "stats": undefined,
-      "zippedSize": 3288,
+      "zippedSize": 3324,
     },
   },
 ]
@@ -412,7 +412,7 @@ Array [
     "result": Object {
       "human": Object {
         "size": "637B",
-        "zippedSize": "372B",
+        "zippedSize": "373B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -427,7 +427,7 @@ Array [
       "pkgFile": "node_modules/@ambarli/alias/package.json",
       "size": 637,
       "stats": undefined,
-      "zippedSize": 372,
+      "zippedSize": 373,
     },
   },
 ]
@@ -450,7 +450,7 @@ Array [
     "result": Object {
       "human": Object {
         "size": "21.1KB",
-        "zippedSize": "8.29KB",
+        "zippedSize": "8.33KB",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -465,7 +465,7 @@ Array [
       "pkgFile": "node_modules/lodash/package.json",
       "size": 21611,
       "stats": undefined,
-      "zippedSize": 8489,
+      "zippedSize": 8525,
     },
   },
 ]
