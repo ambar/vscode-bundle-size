@@ -26,7 +26,12 @@ export type ParseResult = {
 export const parse = (input: string): ParseResult => {
   const ast = parser.parse(input, {
     sourceType: 'module',
-    plugins: ['jsx', 'typescript'],
+    plugins: [
+      'jsx',
+      'typescript',
+      // https://babeljs.io/docs/babel-plugin-proposal-decorators
+      ['decorators', {}],
+    ],
   })
   if (ast.errors.length) {
     throw new Error(ast.errors[0].code)
