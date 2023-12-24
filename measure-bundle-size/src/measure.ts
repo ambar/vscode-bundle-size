@@ -2,7 +2,8 @@ import {promises as fs} from 'fs'
 import path from 'path'
 import bytes from 'bytes'
 import Debug from 'debug'
-import gzipSize from 'gzip-size'
+import {promisify} from 'util'
+import zlib from 'zlib'
 import * as esbuild from 'esbuild'
 import {builtinModules} from 'module'
 import {parse, ImportInfo, exportImported} from './parse'
@@ -10,6 +11,8 @@ import analyzeMetafile from './analyzeMetafile'
 import {findPkg, findPkgs, Pkg} from './findPkg'
 
 const logger = Debug('measure-bundle-size')
+const gzip = promisify(zlib.gzip)
+const gzipSize = (buf: Buffer) => gzip(buf).then((x) => x.length)
 
 export const hasFile = async (file: string) =>
   Boolean(await fs.stat(file).catch(() => null))
@@ -260,9 +263,9 @@ const bundle = async (
 const withValue = async <T>(valueFn: () => Promise<T>) => {
   try {
     const r = await valueFn()
-    return <const>[void 0, r]
+    return [void 0, r] as const
   } catch (err) {
-    return <const>[err, void 0]
+    return [err, void 0] as const
   }
 }
 

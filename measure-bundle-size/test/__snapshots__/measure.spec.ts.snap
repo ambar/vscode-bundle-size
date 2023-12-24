@@ -333,7 +333,7 @@ Array [
     "result": Object {
       "human": Object {
         "size": "71.78KB",
-        "zippedSize": "26.1KB",
+        "zippedSize": "26.18KB",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -348,7 +348,7 @@ Array [
       "pkgFile": "node_modules/lodash/package.json",
       "size": 73500,
       "stats": undefined,
-      "zippedSize": 26730,
+      "zippedSize": 26804,
     },
   },
 ]
@@ -389,7 +389,7 @@ Array [
       "pkgFile": "node_modules/react/package.json",
       "size": 7974,
       "stats": undefined,
-      "zippedSize": 3324,
+      "zippedSize": 3326,
     },
   },
 ]
@@ -465,7 +465,7 @@ Array [
       "pkgFile": "node_modules/lodash/package.json",
       "size": 21611,
       "stats": undefined,
-      "zippedSize": 8525,
+      "zippedSize": 8526,
     },
   },
 ]

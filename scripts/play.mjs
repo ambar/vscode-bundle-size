@@ -21,7 +21,7 @@ const main = async () => {
     stats: 'table',
   })
   console.info(result)
-  console.info(result[0].result.stats)
+  console.info(result.find((r) => r.result).result.stats)
 }
 
 main()
