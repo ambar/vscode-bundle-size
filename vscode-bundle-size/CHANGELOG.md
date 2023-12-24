@@ -5,7 +5,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [1.6.1](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.6.0...bundle-size@1.6.1) (2023-12-24)
 
-**Note:** Version bump only for package bundle-size
+- enable experimental decorators ([af07e9d](https://github.com/ambar/vscode-bundle-size/commit/af07e9dd421c5f31cd2d8a21454ee407b1003da7))
+- use binary loader for .node files ([9272c9f](https://github.com/ambar/vscode-bundle-size/commit/9272c9fb536b9d1bb1eeee6f01bddef8cf389c21))
 
 # [1.6.0](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.5.0...bundle-size@1.6.0) (2023-12-23)
 
