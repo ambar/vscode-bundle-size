@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.6.0...bundle-size@1.6.1) (2023-12-24)
+
+**Note:** Version bump only for package bundle-size
+
 # [1.6.0](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.5.0...bundle-size@1.6.0) (2023-12-23)
 
 ### Features
