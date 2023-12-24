@@ -25,17 +25,13 @@ export const install = async (onInstall: AnyFunction) => {
   }
   onInstall()
   let err: unknown
-  await command('yarn --prod', {cwd: __dirname}).catch((e) => {
-    err = e
-  })
-  if (hasEsbuild()) {
-    return
-  }
-  await command('npm i --prod', {cwd: __dirname}).catch((e) => {
-    err = e
-  })
-  if (hasEsbuild()) {
-    return
+  for (const cmd of ['yarn --prod', 'npm i --prod']) {
+    await command(cmd, {cwd: __dirname}).catch((e) => {
+      err = e
+    })
+    if (hasEsbuild()) {
+      return
+    }
   }
   return Promise.reject(err)
 }
