@@ -185,7 +185,6 @@ const bundle = async (
    * - respect 'browser' field in package.json
    * - production build, respect `NODE_ENV`
    *
-   * TODO: add loader for `.node`
    * @see https://esbuild.github.io/api/#build-api
    */
   const buildResult = await esbuild.build({
@@ -198,6 +197,9 @@ const bundle = async (
     outfile: '<bundle>.js',
     absWorkingDir: workingDir,
     plugins: [builtinExternalPlugin, peerExternalPlugin],
+    loader: {
+      '.node': 'binary',
+    },
     external,
     target: 'esnext',
     format: 'esm',
