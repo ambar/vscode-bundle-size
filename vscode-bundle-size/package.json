@@ -68,6 +68,11 @@
           "type": "string",
           "default": "#e33",
           "description": "Danger color for the size text"
+        },
+        "bundleSize.flowPattern": {
+          "type": "string",
+          "default": "\\/node_modules\\/(@react-native|react-native|react-native-linear-gradient)\\/(.*)\\.js$",
+          "description": "The regexp pattern to match files containing the Flow type"
         }
       }
     }

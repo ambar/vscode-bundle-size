@@ -80,6 +80,26 @@ const peerExternalPlugin: esbuild.Plugin = {
   },
 }
 
+const stripFlowTypesPlugin = (
+  pattern = /\/node_modules\/(@react-native|react-native|react-native-linear-gradient)\/(.*)\.js$/
+): esbuild.Plugin => {
+  return {
+    name: 'flow',
+    setup(build) {
+      build.onLoad({filter: pattern}, async (args) => {
+        const source = await fs.readFile(args.path, 'utf8')
+        const {stripFlowTypes} = await import('./stripFlowTypes')
+        const output = stripFlowTypes(source.toString(), args.path)
+        const contents = output ?? ''
+        return {
+          contents,
+          loader: 'jsx',
+        }
+      })
+    },
+  }
+}
+
 type StatsOpt = boolean | 'tree' | 'table'
 
 type BundleResult = {
@@ -128,12 +148,19 @@ const pickPkgFields = (pkg: Pkg) => {
   ])
 }
 
+/**
+ * TODO: add more support for RN
+ * - add a platform/target option: `target: 'web' | 'node' | 'neutral' | 'react-native'`
+ * - add exports support: `conditions: ['react-native', 'import']`
+ * - use jsx loader for .js
+ */
 const bundle = async (
   statement: string,
   importInfo: ImportInfo,
   {
     baseDir,
     projectPkgFile,
+    flowPattern,
     stats: statsOpt = false,
     cache: cacheOpt = false,
   }: {
@@ -141,6 +168,7 @@ const bundle = async (
     projectPkgFile?: string | void
     stats?: StatsOpt
     cache?: boolean
+    flowPattern?: RegExp
   }
 ): Promise<BundleResult> => {
   const bundleMark = timeMark<'bundle' | 'zip' | 'analyze'>()
@@ -164,6 +192,7 @@ const bundle = async (
     return {} as T
   })
 
+  // TODO: use current package path as the cache key
   const cacheKey =
     cacheOpt && rootPkg !== undefined && genCacheKey(rootPkg, entryInput)
   if (cacheOpt && cacheKey) {
@@ -196,9 +225,32 @@ const bundle = async (
     },
     outfile: '<bundle>.js',
     absWorkingDir: workingDir,
-    plugins: [builtinExternalPlugin, peerExternalPlugin],
+    plugins: [
+      builtinExternalPlugin,
+      peerExternalPlugin,
+      stripFlowTypesPlugin(flowPattern),
+    ],
+    resolveExtensions: [
+      // RN
+      '.ios.js',
+      '.android.js',
+      '.native.js',
+      // defaults to .jsx,.js,.tsx,.ts,.css,.json
+      '.jsx',
+      '.js',
+      '.tsx',
+      '.ts',
+      '.css',
+      '.json',
+    ],
     loader: {
       '.node': 'binary',
+      // RN or web app may use static assets
+      '.jpeg': 'empty',
+      '.jpg': 'empty',
+      '.png': 'empty',
+      '.webp': 'empty',
+      '.gif': 'empty',
     },
     external,
     target: 'esnext',
@@ -300,6 +352,10 @@ type MeasureOptions = {
    * the path of the workspace folder
    */
   workspaceFolder?: string
+  /**
+   * the files pattern to strip flow types
+   */
+  flowPattern?: RegExp
 }
 
 /**
@@ -308,7 +364,7 @@ type MeasureOptions = {
 export async function* measureIterable(
   input: string,
   fileName?: string | null,
-  {debug, log, stats, cache, workspaceFolder}: MeasureOptions = {}
+  {debug, log, stats, cache, workspaceFolder, flowPattern}: MeasureOptions = {}
 ): AsyncGenerator<MeasureResult> {
   if (debug) {
     logger.enabled = true
@@ -335,7 +391,7 @@ export async function* measureIterable(
   parseMark.end('parse')
   logger(parseMark.print())
 
-  const bundleOpts = {baseDir, projectPkgFile, stats, cache}
+  const bundleOpts = {baseDir, projectPkgFile, stats, cache, flowPattern}
   for (const importInfo of result.imports) {
     const statement = input.substring(importInfo.start, importInfo.end)
     // await new Promise((resolve) => setTimeout(resolve, 500))

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`syntax: exportImported 1`] = `
-Array [
+[
   "export {defaultExport}",
   "",
   "export {export1}",
@@ -16,89 +16,89 @@ Array [
 `;
 
 exports[`syntax: result 1`] = `
-Object {
-  "imports": Array [
-    Object {
+{
+  "imports": [
+    {
       "end": 36,
       "from": "module-1",
-      "names": Object {
+      "names": {
         "default": "defaultExport",
       },
       "start": 0,
     },
-    Object {
+    {
       "end": 69,
       "from": "module-2",
-      "namespace": Object {
+      "namespace": {
         "name": "name",
-        "usingProps": Array [],
+        "usingProps": [],
       },
       "start": 37,
     },
-    Object {
+    {
       "end": 104,
       "from": "module-3",
-      "names": Object {
+      "names": {
         "export1": "export1",
       },
       "start": 70,
     },
-    Object {
+    {
       "end": 149,
       "from": "module-4",
-      "names": Object {
+      "names": {
         "export1": "alias1",
       },
       "start": 105,
     },
-    Object {
+    {
       "end": 194,
       "from": "module-5",
-      "names": Object {
+      "names": {
         "export2": "export2",
         "export3": "export3",
       },
       "start": 150,
     },
-    Object {
+    {
       "end": 249,
       "from": "module-6",
-      "names": Object {
+      "names": {
         "export4": "export4",
         "export5": "alias2",
       },
       "start": 195,
     },
-    Object {
+    {
       "end": 300,
       "from": "module-7",
-      "names": Object {
+      "names": {
         "default": "defaultExport2",
         "export6": "export6",
       },
       "start": 250,
     },
-    Object {
+    {
       "end": 350,
       "from": "module-8",
-      "names": Object {
+      "names": {
         "default": "defaultExport3",
       },
-      "namespace": Object {
+      "namespace": {
         "name": "name2",
-        "usingProps": Array [],
+        "usingProps": [],
       },
       "start": 301,
     },
-    Object {
+    {
       "end": 446,
       "from": "module-9",
-      "names": Object {
+      "names": {
         "string literal": "name3",
       },
       "start": 396,
     },
-    Object {
+    {
       "end": 465,
       "from": "module-10",
       "start": 447,

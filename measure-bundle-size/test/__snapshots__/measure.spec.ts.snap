@@ -27,27 +27,27 @@ exports[`analyze 1`] = `
 exports[`measure "
     import 'react-inline-center'
   " 1`] = `
-Array [
-  Object {
+[
+  {
     "error": undefined,
-    "importInfo": Object {
+    "importInfo": {
       "end": 28,
       "from": "react-inline-center",
       "start": 0,
     },
-    "result": Object {
-      "human": Object {
+    "result": {
+      "human": {
         "size": "22B",
         "zippedSize": "42B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
-      "pkg": Object {
+      "pkg": {
         "dependencies": undefined,
         "description": "Centering inline element",
         "homepage": undefined,
         "name": "react-inline-center",
-        "peerDependencies": Object {
+        "peerDependencies": {
           "react": "*",
         },
         "version": "1.0.1",
@@ -65,22 +65,22 @@ exports[`measure "
     import 'sanitize.css'
     import 'sanitize.css/forms.css'
   " 1`] = `
-Array [
-  Object {
+[
+  {
     "error": undefined,
-    "importInfo": Object {
+    "importInfo": {
       "end": 21,
       "from": "sanitize.css",
       "start": 0,
     },
-    "result": Object {
-      "human": Object {
+    "result": {
+      "human": {
         "size": "2.13KB",
-        "zippedSize": "923B",
+        "zippedSize": "930B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
-      "pkg": Object {
+      "pkg": {
         "dependencies": undefined,
         "description": "A best-practices CSS foundation",
         "homepage": "https://github.com/csstools/sanitize.css#readme",
@@ -91,24 +91,24 @@ Array [
       "pkgFile": "node_modules/sanitize.css/package.json",
       "size": 2185,
       "stats": undefined,
-      "zippedSize": 923,
+      "zippedSize": 930,
     },
   },
-  Object {
+  {
     "error": undefined,
-    "importInfo": Object {
+    "importInfo": {
       "end": 53,
       "from": "sanitize.css/forms.css",
       "start": 22,
     },
-    "result": Object {
-      "human": Object {
+    "result": {
+      "human": {
         "size": "525B",
-        "zippedSize": "355B",
+        "zippedSize": "353B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
-      "pkg": Object {
+      "pkg": {
         "dependencies": undefined,
         "description": "A best-practices CSS foundation",
         "homepage": "https://github.com/csstools/sanitize.css#readme",
@@ -119,7 +119,7 @@ Array [
       "pkgFile": "node_modules/sanitize.css/package.json",
       "size": 525,
       "stats": undefined,
-      "zippedSize": 355,
+      "zippedSize": 353,
     },
   },
 ]
@@ -128,27 +128,27 @@ Array [
 exports[`measure "
     import * as dateFns from 'date-fns'
     " 1`] = `
-Array [
-  Object {
+[
+  {
     "error": undefined,
-    "importInfo": Object {
+    "importInfo": {
       "end": 35,
       "from": "date-fns",
-      "namespace": Object {
+      "namespace": {
         "name": "dateFns",
-        "usingProps": Array [],
+        "usingProps": [],
       },
       "start": 0,
     },
-    "result": Object {
-      "human": Object {
+    "result": {
+      "human": {
         "size": "0B",
         "zippedSize": "0B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
-      "pkg": Object {
-        "dependencies": Object {},
+      "pkg": {
+        "dependencies": {},
         "description": "Modern JavaScript date utility library",
         "homepage": undefined,
         "name": "date-fns",
@@ -176,27 +176,27 @@ exports[`measure "
       }())
     }
     " 1`] = `
-Array [
-  Object {
+[
+  {
     "error": undefined,
-    "importInfo": Object {
+    "importInfo": {
       "end": 35,
       "from": "date-fns",
-      "namespace": Object {
+      "namespace": {
         "name": "dateFns",
-        "usingProps": Array [],
+        "usingProps": [],
       },
       "start": 0,
     },
-    "result": Object {
-      "human": Object {
+    "result": {
+      "human": {
         "size": "0B",
         "zippedSize": "0B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
-      "pkg": Object {
-        "dependencies": Object {},
+      "pkg": {
+        "dependencies": {},
         "description": "Modern JavaScript date utility library",
         "homepage": undefined,
         "name": "date-fns",
@@ -216,16 +216,16 @@ exports[`measure "
     import * as dateFns from 'date-fns'
     dateFns.addDays
     " 1`] = `
-Array [
-  Object {
+[
+  {
     "error": undefined,
-    "importInfo": Object {
+    "importInfo": {
       "end": 35,
       "from": "date-fns",
-      "namespace": Object {
+      "namespace": {
         "name": "dateFns",
-        "usingProps": Array [
-          Object {
+        "usingProps": [
+          {
             "end": 51,
             "name": "addDays",
             "start": 36,
@@ -234,15 +234,15 @@ Array [
       },
       "start": 0,
     },
-    "result": Object {
-      "human": Object {
+    "result": {
+      "human": {
         "size": "869B",
         "zippedSize": "506B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
-      "pkg": Object {
-        "dependencies": Object {},
+      "pkg": {
+        "dependencies": {},
         "description": "Modern JavaScript date utility library",
         "homepage": undefined,
         "name": "date-fns",
@@ -261,15 +261,15 @@ Array [
 exports[`measure "
     import * as utils from './utils'
     " 1`] = `
-Array [
-  Object {
+[
+  {
     "error": [Error: Skip non-npm packages],
-    "importInfo": Object {
+    "importInfo": {
       "end": 32,
       "from": "./utils",
-      "namespace": Object {
+      "namespace": {
         "name": "utils",
-        "usingProps": Array [],
+        "usingProps": [],
       },
       "start": 0,
     },
@@ -281,26 +281,26 @@ Array [
 exports[`measure "
     import {lightFormat} from 'date-fns'
     " 1`] = `
-Array [
-  Object {
+[
+  {
     "error": undefined,
-    "importInfo": Object {
+    "importInfo": {
       "end": 36,
       "from": "date-fns",
-      "names": Object {
+      "names": {
         "lightFormat": "lightFormat",
       },
       "start": 0,
     },
-    "result": Object {
-      "human": Object {
+    "result": {
+      "human": {
         "size": "2.43KB",
-        "zippedSize": "1.14KB",
+        "zippedSize": "1.13KB",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
-      "pkg": Object {
-        "dependencies": Object {},
+      "pkg": {
+        "dependencies": {},
         "description": "Modern JavaScript date utility library",
         "homepage": undefined,
         "name": "date-fns",
@@ -310,7 +310,7 @@ Array [
       "pkgFile": "node_modules/date-fns/package.json",
       "size": 2489,
       "stats": undefined,
-      "zippedSize": 1166,
+      "zippedSize": 1162,
     },
   },
 ]
@@ -319,25 +319,25 @@ Array [
 exports[`measure "
     import {map} from 'lodash'
     " 1`] = `
-Array [
-  Object {
+[
+  {
     "error": undefined,
-    "importInfo": Object {
+    "importInfo": {
       "end": 26,
       "from": "lodash",
-      "names": Object {
+      "names": {
         "map": "map",
       },
       "start": 0,
     },
-    "result": Object {
-      "human": Object {
+    "result": {
+      "human": {
         "size": "71.78KB",
-        "zippedSize": "26.18KB",
+        "zippedSize": "26.02KB",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
-      "pkg": Object {
+      "pkg": {
         "dependencies": undefined,
         "description": "Lodash modular utilities.",
         "homepage": "https://lodash.com/",
@@ -348,7 +348,7 @@ Array [
       "pkgFile": "node_modules/lodash/package.json",
       "size": 73500,
       "stats": undefined,
-      "zippedSize": 26804,
+      "zippedSize": 26641,
     },
   },
 ]
@@ -357,26 +357,26 @@ Array [
 exports[`measure "
     import React from 'react'
   " 1`] = `
-Array [
-  Object {
+[
+  {
     "error": undefined,
-    "importInfo": Object {
+    "importInfo": {
       "end": 25,
       "from": "react",
-      "names": Object {
+      "names": {
         "default": "React",
       },
       "start": 0,
     },
-    "result": Object {
-      "human": Object {
+    "result": {
+      "human": {
         "size": "7.79KB",
-        "zippedSize": "3.25KB",
+        "zippedSize": "3.26KB",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
-      "pkg": Object {
-        "dependencies": Object {
+      "pkg": {
+        "dependencies": {
           "loose-envify": "^1.1.0",
           "object-assign": "^4.1.1",
         },
@@ -389,7 +389,7 @@ Array [
       "pkgFile": "node_modules/react/package.json",
       "size": 7974,
       "stats": undefined,
-      "zippedSize": 3326,
+      "zippedSize": 3335,
     },
   },
 ]
@@ -398,25 +398,25 @@ Array [
 exports[`measure "
     import factory from '@ambarli/alias/factory'
   " 1`] = `
-Array [
-  Object {
+[
+  {
     "error": undefined,
-    "importInfo": Object {
+    "importInfo": {
       "end": 44,
       "from": "@ambarli/alias/factory",
-      "names": Object {
+      "names": {
         "default": "factory",
       },
       "start": 0,
     },
-    "result": Object {
-      "human": Object {
+    "result": {
+      "human": {
         "size": "637B",
-        "zippedSize": "373B",
+        "zippedSize": "372B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
-      "pkg": Object {
+      "pkg": {
         "dependencies": undefined,
         "description": "Get aliases",
         "homepage": undefined,
@@ -427,7 +427,7 @@ Array [
       "pkgFile": "node_modules/@ambarli/alias/package.json",
       "size": 637,
       "stats": undefined,
-      "zippedSize": 373,
+      "zippedSize": 372,
     },
   },
 ]
@@ -436,25 +436,25 @@ Array [
 exports[`measure "
     import map from 'lodash/map'
     " 1`] = `
-Array [
-  Object {
+[
+  {
     "error": undefined,
-    "importInfo": Object {
+    "importInfo": {
       "end": 28,
       "from": "lodash/map",
-      "names": Object {
+      "names": {
         "default": "map",
       },
       "start": 0,
     },
-    "result": Object {
-      "human": Object {
+    "result": {
+      "human": {
         "size": "21.1KB",
-        "zippedSize": "8.33KB",
+        "zippedSize": "8.29KB",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
-      "pkg": Object {
+      "pkg": {
         "dependencies": undefined,
         "description": "Lodash modular utilities.",
         "homepage": "https://lodash.com/",
@@ -465,7 +465,7 @@ Array [
       "pkgFile": "node_modules/lodash/package.json",
       "size": 21611,
       "stats": undefined,
-      "zippedSize": 8526,
+      "zippedSize": 8489,
     },
   },
 ]
@@ -476,37 +476,37 @@ exports[`measure "
     import fs from 'fs/promise'
     import url from 'node:url'
     " 1`] = `
-Array [
-  Object {
+[
+  {
     "error": [Error: Skip builtin modules],
-    "importInfo": Object {
+    "importInfo": {
       "end": 23,
       "from": "path",
-      "names": Object {
+      "names": {
         "default": "path",
       },
       "start": 0,
     },
     "result": undefined,
   },
-  Object {
+  {
     "error": [Error: Skip builtin modules],
-    "importInfo": Object {
+    "importInfo": {
       "end": 51,
       "from": "fs/promise",
-      "names": Object {
+      "names": {
         "default": "fs",
       },
       "start": 24,
     },
     "result": undefined,
   },
-  Object {
+  {
     "error": [Error: Skip builtin modules],
-    "importInfo": Object {
+    "importInfo": {
       "end": 78,
       "from": "node:url",
-      "names": Object {
+      "names": {
         "default": "url",
       },
       "start": 52,
@@ -521,4 +521,12 @@ exports[`no package.json in exports 1`] = `
 | --- | --- | --- | --- |
 | \`<bundle>.js\` |  | 308B | 100% |
 | \`↪ escalade\` | dist/index.mjs | 285B | 92.5% |"
+`;
+
+exports[`parse flow type 1`] = `
+"| Input | Files | Size | Percent |
+| --- | --- | --- | --- |
+| \`<bundle>.js\` |  | 764B | 100% |
+| \`↪ @react-native/assets\` | registry.js | 142B | 18.6% |
+| \`↪ <import>\` |  | 13B | 1.7% |"
 `;

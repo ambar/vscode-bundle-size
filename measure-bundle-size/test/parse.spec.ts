@@ -121,30 +121,30 @@ test('syntax', () => {
 test('namespace', () => {
   const result = parse(namespaceInput)
   expect(result).toMatchInlineSnapshot(`
-    Object {
-      "imports": Array [
-        Object {
+    {
+      "imports": [
+        {
           "end": 32,
           "from": "module",
-          "namespace": Object {
+          "namespace": {
             "name": "name",
-            "usingProps": Array [
-              Object {
+            "usingProps": [
+              {
                 "end": 74,
                 "name": "using1",
                 "start": 63,
               },
-              Object {
+              {
                 "end": 99,
                 "name": "using2",
                 "start": 88,
               },
-              Object {
+              {
                 "end": 135,
                 "name": "using3",
                 "start": 124,
               },
-              Object {
+              {
                 "end": 165,
                 "name": "using4",
                 "start": 154,
@@ -157,7 +157,7 @@ test('namespace', () => {
     }
   `)
   expect(result.imports.map(exportImported)).toMatchInlineSnapshot(`
-    Array [
+    [
       "export default [name.using1, name.using2, name.using3, name.using4]",
     ]
   `)
@@ -165,24 +165,24 @@ test('namespace', () => {
 
 test('hashbang', () => {
   expect(parse(`#!/usr/bin/env node`)).toMatchInlineSnapshot(`
-    Object {
-      "imports": Array [],
+    {
+      "imports": [],
     }
   `)
 })
 
 test('jsx', () => {
   expect(parse(`export default <div />`)).toMatchInlineSnapshot(`
-    Object {
-      "imports": Array [],
+    {
+      "imports": [],
     }
   `)
 })
 
 test('ts', () => {
   expect(parse(`type t = 0`)).toMatchInlineSnapshot(`
-    Object {
-      "imports": Array [],
+    {
+      "imports": [],
     }
   `)
 })
