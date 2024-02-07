@@ -21,13 +21,15 @@
     "@babel/traverse": "^7.23.6",
     "bytes": "^3.1.0",
     "debug": "^4.3.2",
-    "escalade": "^3.1.1"
+    "escalade": "^3.1.1",
+    "sucrase": "^3.35.0"
   },
   "peerDependencies": {
     "esbuild": "^0"
   },
   "devDependencies": {
     "@ambarli/alias": "^0.0.0",
+    "@react-native/assets": "^1.0.0",
     "@types/bytes": "^3.1.1",
     "@types/debug": "^4.1.7",
     "@types/dedent": "^0.7.0",
@@ -35,6 +37,7 @@
     "@types/react": "^17.0.32",
     "date-fns": "^2.17.0",
     "dedent": "^0.7.0",
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-inline-center": "^1.0.1",
     "sanitize.css": "^13.0.0",

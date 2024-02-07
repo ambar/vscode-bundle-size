@@ -15,13 +15,16 @@ yarn add measure-bundle-size
 ```ts
 import {measureIterable, measure, type MeasureResult} from 'measure-bundle-size'
 
+type MeasureOptions = {
+  debug?: boolean
+  log?: (...args: any[]) => void
+  stats?: boolean | 'tree' | 'table'
+  workspaceFolder?: string
+  flowPattern?: RegExp
+}
+
 // Lazy async generator API
-type measureIterable = (input: string, fileName?: string | null, {
-    debug?: boolean
-    log?: (...args: any[]) => void
-    stats?: boolean | 'tree' | 'table'
-    workspaceFolder?: string
-}) => AsyncGenerator<MeasureResult>
+type measureIterable = (input: string, fileName?: string | null, MeasureOptions) => AsyncGenerator<MeasureResult>
 
 for await (const result of measureIterable(`code`, __filename, {
   debug: true,
@@ -33,12 +36,7 @@ for await (const result of measureIterable(`code`, __filename, {
 }
 
 // Promise API
-type measure = (input: string, fileName?: string | null, {
-    debug?: boolean
-    log?: (...args: any[]) => void
-    stats?: boolean | 'tree' | 'table'
-    workspaceFolder?: string
-}) => Promise<MeasureResult[]>
+type measure = (input: string, fileName?: string | null, MeasureOptions) => Promise<MeasureResult[]>
 
 const results = await measure(`code`, __filename, {
   debug: true,

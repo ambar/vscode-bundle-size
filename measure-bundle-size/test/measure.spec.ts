@@ -115,3 +115,15 @@ test('no package.json in exports', async () => {
   })
   expect(r.result!.stats).toMatchSnapshot()
 })
+
+test('parse flow type', async () => {
+  const [r] = await measure(
+    `import {registerAsset} from '@react-native/assets/registry'`,
+    null,
+    {
+      workspaceFolder: __dirname,
+      stats: 'table',
+    }
+  )
+  expect(r.result!.stats).toMatchSnapshot()
+})

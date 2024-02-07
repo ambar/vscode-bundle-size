@@ -4,10 +4,10 @@
   "ignoreChanges": [
     "**/fixtures/**",
     "**/__tests__/**",
+    "**/__snapshots__/**",
     "**/test/**",
     "**/*.md"
   ],
   "npmClient": "yarn",
-  "useWorkspaces": true,
   "conventionalCommits": true
 }

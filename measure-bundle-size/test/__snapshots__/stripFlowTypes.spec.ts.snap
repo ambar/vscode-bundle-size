@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`stripFlowTypes 1`] = `
+""use strict";var _jsxruntime = require("react/jsx-runtime");Object.defineProperty(exports, "__esModule", {value: true});
+const countries = {
+  US: "United States",
+  IT: "Italy",
+  FR: "France"
+};
+
+
+
+ const italy = 'IT'; exports.italy = italy;
+ const foo = _jsxruntime.jsx.call(void 0, 'div', {} ); exports.foo = foo
+"
+`;

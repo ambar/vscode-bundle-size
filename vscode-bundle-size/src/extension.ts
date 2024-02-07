@@ -164,12 +164,14 @@ async function processDocument(document?: vscode.TextDocument) {
   const config = vscode.workspace.getConfiguration('bundleSize')
 
   const decorationInfo: DecorationInfo[] = []
+  const flowPattern = config.get<string>('flowPattern')
   for await (const measure of measureIterable(document.getText(), fileName, {
     cache: config.get('cache') ?? true,
     debug: true,
     stats: 'table',
     log: channelLog,
     workspaceFolder: workspaceFolder?.uri.fsPath,
+    flowPattern: flowPattern ? new RegExp(flowPattern) : undefined,
   })) {
     if (editor !== vscode.window.activeTextEditor) {
       break
