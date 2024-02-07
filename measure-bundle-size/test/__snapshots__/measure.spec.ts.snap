@@ -38,7 +38,7 @@ exports[`measure "
     "result": {
       "human": {
         "size": "22B",
-        "zippedSize": "42B",
+        "zippedSize": "4*B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -55,7 +55,7 @@ exports[`measure "
       "pkgFile": "node_modules/react-inline-center/package.json",
       "size": 22,
       "stats": undefined,
-      "zippedSize": 42,
+      "zippedSize": "4*",
     },
   },
 ]
@@ -76,7 +76,7 @@ exports[`measure "
     "result": {
       "human": {
         "size": "2.13KB",
-        "zippedSize": "930B",
+        "zippedSize": "9**B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -91,7 +91,7 @@ exports[`measure "
       "pkgFile": "node_modules/sanitize.css/package.json",
       "size": 2185,
       "stats": undefined,
-      "zippedSize": 930,
+      "zippedSize": "9**",
     },
   },
   {
@@ -104,7 +104,7 @@ exports[`measure "
     "result": {
       "human": {
         "size": "525B",
-        "zippedSize": "353B",
+        "zippedSize": "3**B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -119,7 +119,7 @@ exports[`measure "
       "pkgFile": "node_modules/sanitize.css/package.json",
       "size": 525,
       "stats": undefined,
-      "zippedSize": 353,
+      "zippedSize": "3**",
     },
   },
 ]
@@ -158,7 +158,7 @@ exports[`measure "
       "pkgFile": "node_modules/date-fns/package.json",
       "size": 0,
       "stats": undefined,
-      "zippedSize": 0,
+      "zippedSize": "0",
     },
   },
 ]
@@ -206,7 +206,7 @@ exports[`measure "
       "pkgFile": "node_modules/date-fns/package.json",
       "size": 0,
       "stats": undefined,
-      "zippedSize": 0,
+      "zippedSize": "0",
     },
   },
 ]
@@ -237,7 +237,7 @@ exports[`measure "
     "result": {
       "human": {
         "size": "869B",
-        "zippedSize": "506B",
+        "zippedSize": "5**B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -252,7 +252,7 @@ exports[`measure "
       "pkgFile": "node_modules/date-fns/package.json",
       "size": 869,
       "stats": undefined,
-      "zippedSize": 506,
+      "zippedSize": "5**",
     },
   },
 ]
@@ -295,7 +295,7 @@ exports[`measure "
     "result": {
       "human": {
         "size": "2.43KB",
-        "zippedSize": "1.13KB",
+        "zippedSize": "1**KB",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -310,7 +310,7 @@ exports[`measure "
       "pkgFile": "node_modules/date-fns/package.json",
       "size": 2489,
       "stats": undefined,
-      "zippedSize": 1162,
+      "zippedSize": "1***",
     },
   },
 ]
@@ -333,7 +333,7 @@ exports[`measure "
     "result": {
       "human": {
         "size": "71.78KB",
-        "zippedSize": "26.02KB",
+        "zippedSize": "2***KB",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -348,7 +348,7 @@ exports[`measure "
       "pkgFile": "node_modules/lodash/package.json",
       "size": 73500,
       "stats": undefined,
-      "zippedSize": 26641,
+      "zippedSize": "2****",
     },
   },
 ]
@@ -371,7 +371,7 @@ exports[`measure "
     "result": {
       "human": {
         "size": "7.79KB",
-        "zippedSize": "3.26KB",
+        "zippedSize": "3**KB",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -389,7 +389,7 @@ exports[`measure "
       "pkgFile": "node_modules/react/package.json",
       "size": 7974,
       "stats": undefined,
-      "zippedSize": 3335,
+      "zippedSize": "3***",
     },
   },
 ]
@@ -412,7 +412,7 @@ exports[`measure "
     "result": {
       "human": {
         "size": "637B",
-        "zippedSize": "372B",
+        "zippedSize": "3**B",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -427,7 +427,7 @@ exports[`measure "
       "pkgFile": "node_modules/@ambarli/alias/package.json",
       "size": 637,
       "stats": undefined,
-      "zippedSize": 372,
+      "zippedSize": "3**",
     },
   },
 ]
@@ -450,7 +450,7 @@ exports[`measure "
     "result": {
       "human": {
         "size": "21.1KB",
-        "zippedSize": "8.29KB",
+        "zippedSize": "8**KB",
       },
       "modulePkg": undefined,
       "modulePkgFile": undefined,
@@ -465,7 +465,7 @@ exports[`measure "
       "pkgFile": "node_modules/lodash/package.json",
       "size": 21611,
       "stats": undefined,
-      "zippedSize": 8489,
+      "zippedSize": "8***",
     },
   },
 ]

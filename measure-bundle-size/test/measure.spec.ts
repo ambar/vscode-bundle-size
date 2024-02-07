@@ -1,7 +1,38 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import path from 'path'
 import dedent from 'dedent'
-import {measure} from '../src/measure'
+import {measure, MeasureResult} from '../src/measure'
+
+// zlib different on mac/linux: https://github.com/nodejs/node/issues/12244
+const snapshot = (values: MeasureResult[]) => {
+  const maskSize = (value: number | string) => {
+    if (typeof value === 'number') {
+      return `${String(value)[0]}`.padEnd(String(value).length, '*')
+    }
+    const [size, unit] = value.split(/(B|KB|MB)/g)
+    return size[0].padEnd(size.length - unit.length + 1, '*') + unit
+  }
+
+  expect(
+    values.map((r) => {
+      const result = r?.result
+      if (result) {
+        return {
+          ...r,
+          result: {
+            ...result,
+            zippedSize: maskSize(result.zippedSize),
+            human: {
+              ...result.human,
+              zippedSize: maskSize(result.human.zippedSize),
+            },
+          },
+        }
+      }
+      return r
+    })
+  ).toMatchSnapshot()
+}
 
 const inputs = [
   // skip node core
@@ -69,7 +100,7 @@ const inputs = [
 ]
 
 test.each(inputs)('measure %p', async (input) => {
-  expect(await measure(dedent(input), __filename)).toMatchSnapshot()
+  snapshot(await measure(dedent(input), __filename))
 })
 
 test('throw', async () => {
