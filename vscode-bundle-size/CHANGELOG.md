@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.6.1...bundle-size@1.7.0) (2024-02-08)
+
+
+### Features
+
+* add loader option ([428a219](https://github.com/ambar/vscode-bundle-size/commit/428a219858691617d1b40301f2a0d5b60498f872))
+* add support for parsing Flow, applied to RN modules by default ([86fc1d6](https://github.com/ambar/vscode-bundle-size/commit/86fc1d6a378c72725df528f48e3f718db7566848))
+
+
+
+
+
 ## [1.6.1](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.6.0...bundle-size@1.6.1) (2023-12-24)
 
 - enable experimental decorators ([af07e9d](https://github.com/ambar/vscode-bundle-size/commit/af07e9dd421c5f31cd2d8a21454ee407b1003da7))
