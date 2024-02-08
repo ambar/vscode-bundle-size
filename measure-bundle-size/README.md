@@ -21,6 +21,7 @@ type MeasureOptions = {
   stats?: boolean | 'tree' | 'table'
   workspaceFolder?: string
   flowPattern?: RegExp
+  loader?: esbuild.BuildOptions['loader']
 }
 
 // Lazy async generator API

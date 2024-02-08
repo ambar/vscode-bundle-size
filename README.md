@@ -59,6 +59,38 @@ Because this extension builds locally, you need to pre-install dependencies.
     "type": "string",
     "default": "#e33",
     "description": "Danger color for the size text"
+  },
+  "bundleSize.loader": {
+    "type": "object",
+    "patternProperties": {
+      ".*": {
+        "type": "string",
+        "enum": [
+          "base64",
+          "binary",
+          "copy",
+          "css",
+          "dataurl",
+          "default",
+          "empty",
+          "file",
+          "js",
+          "json",
+          "jsx",
+          "local-css",
+          "text",
+          "ts",
+          "tsx"
+        ]
+      }
+    },
+    "default": {},
+    "markdownDescription": "Override the loader in Bundle Size (eg: `.js: jsx` will force `.js` files to be treated as JSX), see [esbuild#loader](https://esbuild.github.io/api/#loader) for more details"
+  },
+  "bundleSize.flowPattern": {
+    "type": "string",
+    "default": "\\/node_modules\\/(@react-native|react-native|react-native-linear-gradient)\\/(.*)\\.js$",
+    "description": "The regexp pattern to match files containing the Flow type"
   }
 }
 ```

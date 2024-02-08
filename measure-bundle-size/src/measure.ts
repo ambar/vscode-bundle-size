@@ -161,6 +161,7 @@ const bundle = async (
     baseDir,
     projectPkgFile,
     flowPattern,
+    loader,
     stats: statsOpt = false,
     cache: cacheOpt = false,
   }: {
@@ -169,6 +170,7 @@ const bundle = async (
     stats?: StatsOpt
     cache?: boolean
     flowPattern?: RegExp
+    loader?: esbuild.BuildOptions['loader']
   }
 ): Promise<BundleResult> => {
   const bundleMark = timeMark<'bundle' | 'zip' | 'analyze'>()
@@ -251,6 +253,7 @@ const bundle = async (
       '.png': 'empty',
       '.webp': 'empty',
       '.gif': 'empty',
+      ...loader,
     },
     external,
     target: 'esnext',
@@ -356,6 +359,10 @@ type MeasureOptions = {
    * the files pattern to strip flow types
    */
   flowPattern?: RegExp
+  /**
+   * custom loader for esbuild
+   */
+  loader?: esbuild.BuildOptions['loader']
 }
 
 /**
@@ -364,7 +371,15 @@ type MeasureOptions = {
 export async function* measureIterable(
   input: string,
   fileName?: string | null,
-  {debug, log, stats, cache, workspaceFolder, flowPattern}: MeasureOptions = {}
+  {
+    debug,
+    log,
+    stats,
+    cache,
+    workspaceFolder,
+    flowPattern,
+    loader,
+  }: MeasureOptions = {}
 ): AsyncGenerator<MeasureResult> {
   if (debug) {
     logger.enabled = true
@@ -391,7 +406,14 @@ export async function* measureIterable(
   parseMark.end('parse')
   logger(parseMark.print())
 
-  const bundleOpts = {baseDir, projectPkgFile, stats, cache, flowPattern}
+  const bundleOpts = {
+    baseDir,
+    projectPkgFile,
+    stats,
+    cache,
+    flowPattern,
+    loader,
+  }
   for (const importInfo of result.imports) {
     const statement = input.substring(importInfo.start, importInfo.end)
     // await new Promise((resolve) => setTimeout(resolve, 500))
