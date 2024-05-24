@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/ambar/vscode-bundle-size/compare/measure-bundle-size@1.5.0...measure-bundle-size@1.6.0) (2024-05-24)
+
+
+### Features
+
+* stop esbuild process to release memory ([478857c](https://github.com/ambar/vscode-bundle-size/commit/478857cf698fa555f740acde07ded32bd26ff05f)), closes [#16](https://github.com/ambar/vscode-bundle-size/issues/16)
+
+
+
+
+
 # [1.5.0](https://github.com/ambar/vscode-bundle-size/compare/measure-bundle-size@1.4.0...measure-bundle-size@1.5.0) (2024-02-08)
 
 

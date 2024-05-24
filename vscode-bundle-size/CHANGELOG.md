@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.7.0...bundle-size@1.8.0) (2024-05-24)
+
+
+### Features
+
+* prefer pnpm to install esbuild ([5d8cfdd](https://github.com/ambar/vscode-bundle-size/commit/5d8cfdd1e496d093e91ac744258534fce76b56db))
+* upgrade esbuild to 0.21.3 ([df0a7dc](https://github.com/ambar/vscode-bundle-size/commit/df0a7dc7aaf9924e789e41a64200eadb98237e64))
+
+
+
+
+
 # [1.7.0](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.6.1...bundle-size@1.7.0) (2024-02-08)
 
 

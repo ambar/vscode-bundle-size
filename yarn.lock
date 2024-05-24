@@ -1614,7 +1614,7 @@ __metadata:
     "@types/node": "npm:^20"
     "@types/vscode": "npm:^1.53.0"
     esbuild: "npm:^0.21.3"
-    measure-bundle-size: "npm:^1.5.0"
+    measure-bundle-size: "npm:^1.6.0"
     pretty-format: "npm:^27.3.1"
     typescript: "npm:^5.4.5"
   languageName: unknown
@@ -3505,7 +3505,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"measure-bundle-size@npm:^1.5.0, measure-bundle-size@workspace:measure-bundle-size":
+"measure-bundle-size@npm:^1.6.0, measure-bundle-size@workspace:measure-bundle-size":
   version: 0.0.0-use.local
   resolution: "measure-bundle-size@workspace:measure-bundle-size"
   dependencies:
