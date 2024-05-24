@@ -77,5 +77,6 @@ export const findPkgs = async (modulePath: string, baseDir: string) => {
       }
     }
   }
+  // @ts-expect-error used before being assigned
   return {rootPkgFile, rootPkg, modulePkgFile, modulePkg}
 }
