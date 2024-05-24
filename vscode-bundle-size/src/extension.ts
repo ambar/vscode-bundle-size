@@ -201,11 +201,12 @@ async function processDocument(document?: vscode.TextDocument) {
 }
 
 function debounce<T extends AnyVoidFunction>(fn: T, wait: number) {
-  let timer: number | undefined
+  let timer: NodeJS.Timeout
   return function () {
     if (timer) {
       clearTimeout(timer)
     }
+    // @ts-expect-error Argument of type 'IArguments' is not assignable to parameter of type 'any[]'
     // eslint-disable-next-line prefer-rest-params
     timer = setTimeout(fn.apply.bind(fn, void 0, arguments), wait)
   } as T
