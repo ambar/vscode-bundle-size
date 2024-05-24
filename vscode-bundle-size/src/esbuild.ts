@@ -25,7 +25,7 @@ export const install = async (onInstall: AnyFunction) => {
   }
   onInstall()
   let err: unknown
-  for (const cmd of ['yarn --prod', 'npm i --prod']) {
+  for (const cmd of ['pnpm i --prod', 'yarn --prod', 'npm i --prod']) {
     await command(cmd, {cwd: __dirname}).catch((e) => {
       err = e
     })
