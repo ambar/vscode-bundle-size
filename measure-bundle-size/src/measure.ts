@@ -265,6 +265,8 @@ const bundle = async (
     write: false,
   })
   bundleMark.end('bundle')
+  // could also use the new context (rebuild/dispose) API
+  await esbuild.stop()
 
   // analyze on hover?
   let stats
