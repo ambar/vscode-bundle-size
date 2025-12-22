@@ -5,9 +5,9 @@
   ],
   "scripts": {
     "watch": "tsc -b --watch measure-bundle-size vscode-bundle-size",
-    "build": "yarn workspaces foreach --all run build",
+    "build": "pnpm -r build",
     "lint": "recommended",
-    "test": "yarn jest"
+    "test": "pnpm jest"
   },
   "jest": {
     "preset": "es-jest"
@@ -35,6 +35,5 @@
     "prettier": "^2.4.1",
     "recommended": "^0.0.7",
     "typescript": "^5.4.5"
-  },
-  "packageManager": "yarn@4.2.2"
+  }
 }
