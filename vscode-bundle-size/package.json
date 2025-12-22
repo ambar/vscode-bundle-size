@@ -105,13 +105,13 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "yarn prebuild && cp ../README.md . && yarn build:esbuild --minify",
-    "vspack": "vsce package --yarn",
+    "vscode:prepublish": "npm run prebuild && cp ../README.md . && npm run build:esbuild --minify",
+    "vspack": "vsce package --no-dependencies",
     "prebuild": "rm -rf out",
     "watch": "tsc -watch",
     "build": "tsc",
     "build:esbuild": "esbuild --bundle src/extension.ts --outfile=out/extension.js --format=cjs --platform=node --external:vscode --external:esbuild",
-    "pretest": "yarn run build && yarn run lint",
+    "pretest": "npm run build",
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
