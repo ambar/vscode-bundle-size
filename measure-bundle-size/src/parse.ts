@@ -63,7 +63,25 @@ export const parse = (input: string): ParseResult => {
 
   // top level only
   const imports = ast.program.body
-    .filter((x) => x.type === 'ImportDeclaration')
+    .filter((x) => {
+      if (x.type !== 'ImportDeclaration') return false
+
+      // `import type * as x from 'module'` or `import type {y} from 'module'`
+      if (x.importKind === 'type') return false
+
+      // `import {type x} from 'module';`
+      if (
+        x.importKind === 'value' &&
+        x.specifiers.length &&
+        x.specifiers.every(
+          (s) => s.type === 'ImportSpecifier' && s.importKind === 'type'
+        )
+      ) {
+        return false
+      }
+
+      return true
+    })
     .map((x) => format(x as t.ImportDeclaration))
 
   const namespaces = imports
