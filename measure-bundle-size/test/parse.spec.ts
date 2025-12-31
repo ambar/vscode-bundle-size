@@ -112,6 +112,12 @@ export let jsx = <name.using4 />
 }
 `
 
+const typeInput = `
+import type * as ns from 'module'
+import type { X1 } from 'module'
+import { type X2 } from 'module'
+`
+
 test('syntax', () => {
   const result = parse(syntaxInput)
   expect(result).toMatchSnapshot('result')
@@ -181,6 +187,12 @@ test('jsx', () => {
 
 test('ts', () => {
   expect(parse(`type t = 0`)).toMatchInlineSnapshot(`
+    {
+      "imports": [],
+    }
+  `)
+
+  expect(parse(typeInput)).toMatchInlineSnapshot(`
     {
       "imports": [],
     }
