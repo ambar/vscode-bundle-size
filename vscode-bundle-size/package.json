@@ -2,7 +2,7 @@
   "name": "bundle-size",
   "displayName": "Bundle Size",
   "description": "Display the bundle size of npm packages",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "license": "MIT",
   "publisher": "ambar",
   "private": true,
@@ -128,7 +128,7 @@
   "devDependencies": {
     "@types/node": "^20",
     "@types/vscode": "^1.53.0",
-    "measure-bundle-size": "^1.6.0",
+    "measure-bundle-size": "^1.7.1",
     "pretty-format": "^27.3.1",
     "typescript": "^5.4.5"
   }

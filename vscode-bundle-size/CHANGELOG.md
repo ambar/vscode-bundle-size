@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.9.0...bundle-size@1.10.0) (2026-04-07)
+
+
+### Bug Fixes
+
+* revert workspace:^ to ^1.6.0 for npm compatibility ([c7aaa83](https://github.com/ambar/vscode-bundle-size/commit/c7aaa83e70a44ad9f2373fb0215d4c2fd5ef9ffd))
+* support Bun runtime for esbuild installation ([#21](https://github.com/ambar/vscode-bundle-size/issues/21)) ([92f95b1](https://github.com/ambar/vscode-bundle-size/commit/92f95b129cd666b0fbafc369b5610e7d62bbb65d))
+* use --omit=dev for npm install in esbuild installer ([8b59e28](https://github.com/ambar/vscode-bundle-size/commit/8b59e28f101f77689021ff8d6927761d3b427962))
+
+
+### Features
+
+* upgrade esbuild to v0.28.0 ([5549551](https://github.com/ambar/vscode-bundle-size/commit/554955110e5dea864b6ecc493a1bcc6f7b8d4f39))
+
+
+
+
+
 # [1.9.0](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.8.0...bundle-size@1.9.0) (2026-04-07)
 
 
