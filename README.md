@@ -87,6 +87,14 @@ Because this extension builds locally, you need to pre-install dependencies.
     "default": {},
     "markdownDescription": "Override the loader in Bundle Size (eg: `.js: jsx` will force `.js` files to be treated as JSX), see [esbuild#loader](https://esbuild.github.io/api/#loader) for more details"
   },
+  // Packages to exclude from bundle size calculation, supports subpath (eg: "next/*")
+  // Note: peer dependencies are automatically excluded, no need to add them here
+  "bundleSize.external": {
+    "type": "array",
+    "items": { "type": "string" },
+    "default": [],
+    "description": "Packages to exclude from bundle size calculation"
+  },
   "bundleSize.flowPattern": {
     "type": "string",
     "default": "\\/node_modules\\/(@react-native|react-native|react-native-linear-gradient)\\/(.*)\\.js$",

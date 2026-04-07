@@ -96,6 +96,14 @@
           "default": {},
           "markdownDescription": "Override the loader in Bundle Size (eg: `.js: jsx` will force `.js` files to be treated as JSX), see [esbuild#loader](https://esbuild.github.io/api/#loader) for more details"
         },
+        "bundleSize.external": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "markdownDescription": "Packages to exclude from bundle size calculation (eg: `[\"react\", \"next\"]`), peer dependencies are automatically excluded. See [esbuild#external](https://esbuild.github.io/api/#external) for more details"
+        },
         "bundleSize.flowPattern": {
           "type": "string",
           "default": "\\/node_modules\\/(@react-native|react-native|react-native-linear-gradient)\\/(.*)\\.js$",
@@ -120,7 +128,7 @@
   "devDependencies": {
     "@types/node": "^20",
     "@types/vscode": "^1.53.0",
-    "measure-bundle-size": "^1.6.0",
+    "measure-bundle-size": "workspace:^",
     "pretty-format": "^27.3.1",
     "typescript": "^5.4.5"
   }

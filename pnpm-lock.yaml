@@ -119,8 +119,8 @@ importers:
         specifier: ^1.53.0
         version: 1.53.0
       measure-bundle-size:
-        specifier: ^1.6.0
-        version: 1.6.0(esbuild@0.21.3)
+        specifier: workspace:^
+        version: link:../measure-bundle-size
       pretty-format:
         specifier: ^27.3.1
         version: 27.3.1
@@ -1477,11 +1477,6 @@ packages:
 
   makeerror@1.0.12:
     resolution: {integrity: sha512-JmqCvUhmt43madlpFzG4BQzG2Z3m6tvQDNKdClZnO3VbIudJYmxsT0FNJMeiB2+JTSlTQTSbU8QdesVmwJcmLg==}
-
-  measure-bundle-size@1.6.0:
-    resolution: {integrity: sha512-aER4lAJYgUhBKG6K6bZU8BcjkoX5mpY0RSU+18FyxodBmLLda3iWVkntLI3xXdm0/E44BtbY8sVCcy1ZxfY6NA==}
-    peerDependencies:
-      esbuild: ^0
 
   merge-stream@2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
@@ -3526,18 +3521,6 @@ snapshots:
   makeerror@1.0.12:
     dependencies:
       tmpl: 1.0.5
-
-  measure-bundle-size@1.6.0(esbuild@0.21.3):
-    dependencies:
-      '@babel/parser': 7.23.9
-      '@babel/traverse': 7.23.9
-      bytes: 3.1.0
-      debug: 4.3.4
-      esbuild: 0.21.3
-      escalade: 3.1.1
-      sucrase: 3.35.0
-    transitivePeerDependencies:
-      - supports-color
 
   merge-stream@2.0.0: {}
 
