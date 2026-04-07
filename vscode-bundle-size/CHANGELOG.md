@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.8.0...bundle-size@1.9.0) (2026-04-07)
+
+
+### Features
+
+* add `bundleSize.external` option to exclude packages from bundle size ([a45ffff](https://github.com/ambar/vscode-bundle-size/commit/a45ffffdbe1f73914ff15003eebe4e135ee6c228)), closes [#24](https://github.com/ambar/vscode-bundle-size/issues/24)
+
+
+
+
+
 # [1.8.0](https://github.com/ambar/vscode-bundle-size/compare/bundle-size@1.7.0...bundle-size@1.8.0) (2024-05-24)
 
 

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/ambar/vscode-bundle-size/compare/measure-bundle-size@1.6.0...measure-bundle-size@1.7.0) (2026-04-07)
+
+
+### Bug Fixes
+
+* add @babel/types to devDependencies to fix type errors ([7f665f7](https://github.com/ambar/vscode-bundle-size/commit/7f665f7032ff687cc901867f4b90340e57a5d291))
+* **test:** commit peer-subpath fixture node_modules ([e643703](https://github.com/ambar/vscode-bundle-size/commit/e643703c3eeb4b21e7c14c0d99b0fe49f847ca76))
+
+
+### Features
+
+* add `bundleSize.external` option to exclude packages from bundle size ([a45ffff](https://github.com/ambar/vscode-bundle-size/commit/a45ffffdbe1f73914ff15003eebe4e135ee6c228)), closes [#24](https://github.com/ambar/vscode-bundle-size/issues/24)
+* **parse:** ignore type only imports ([52628c7](https://github.com/ambar/vscode-bundle-size/commit/52628c78aadf658498876a72db3618406e5c70c4))
+
+
+
+
+
 # [1.6.0](https://github.com/ambar/vscode-bundle-size/compare/measure-bundle-size@1.5.0...measure-bundle-size@1.6.0) (2024-05-24)
 
 
