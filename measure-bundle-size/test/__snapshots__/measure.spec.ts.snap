@@ -4,7 +4,7 @@ exports[`add ellipsis for files 1`] = `
 "| Input | Files | Size | Percent |
 | --- | --- | --- | --- |
 | \`<bundle>.js\` |  | 3.41KB | 100% |
-| \`↪ lodash\` | debounce.js (998B), toNumber.js (399B), _getRawTag.js (245B), _baseGetTag.js (201B), _root.js (139B), isSymbol.js (130B), _trimmedEndIndex.js (115B), _baseTrim.js (112B), isObject.js (107B), _objectToString.js (104B), and 4 other files (320B) | 2.8KB | 82.3% |
+| \`↪ .pnpm\` | lodash@4.17.21/node_modules/lodash/debounce.js (998B), lodash@4.17.21/node_modules/lodash/toNumber.js (399B), lodash@4.17.21/node_modules/lodash/_getRawTag.js (245B), lodash@4.17.21/node_modules/lodash/_baseGetTag.js (201B), lodash@4.17.21/node_modules/lodash/_root.js (139B), lodash@4.17.21/node_modules/lodash/isSymbol.js (130B), lodash@4.17.21/node_modules/lodash/_trimmedEndIndex.js (115B), lodash@4.17.21/node_modules/lodash/_baseTrim.js (112B), lodash@4.17.21/node_modules/lodash/isObject.js (107B), lodash@4.17.21/node_modules/lodash/_objectToString.js (104B), and 4 other files (320B) | 2.8KB | 82.3% |
 | \`↪ <import>\` |  | 16B | 0.5% |"
 `;
 
@@ -19,8 +19,7 @@ exports[`analyze 1`] = `
 "| Input | Files | Size | Percent |
 | --- | --- | --- | --- |
 | \`<bundle>.js\` |  | 7.79KB | 100% |
-| \`↪ react\` | cjs/react.production.min.js (5.82KB), index.js (46B) | 5.87KB | 75.3% |
-| \`↪ object-assign\` | index.js | 956B | 12.0% |
+| \`↪ .pnpm\` | react@17.0.2/node_modules/react/cjs/react.production.min.js (5.82KB), object-assign@4.1.1/node_modules/object-assign/index.js (956B), react@17.0.2/node_modules/react/index.js (46B) | 6.8KB | 87.3% |
 | \`↪ <import>\` |  | 14B | 0.2% |"
 `;
 
@@ -52,7 +51,7 @@ exports[`measure "
         },
         "version": "1.0.1",
       },
-      "pkgFile": "node_modules/react-inline-center/package.json",
+      "pkgFile": "node_modules/.pnpm/react-inline-center@1.0.1_react@17.0.2/node_modules/react-inline-center/package.json",
       "size": 22,
       "stats": undefined,
       "zippedSize": "4*",
@@ -88,7 +87,7 @@ exports[`measure "
         "peerDependencies": undefined,
         "version": "13.0.0",
       },
-      "pkgFile": "node_modules/sanitize.css/package.json",
+      "pkgFile": "node_modules/.pnpm/sanitize.css@13.0.0/node_modules/sanitize.css/package.json",
       "size": 2185,
       "stats": undefined,
       "zippedSize": "9**",
@@ -116,7 +115,7 @@ exports[`measure "
         "peerDependencies": undefined,
         "version": "13.0.0",
       },
-      "pkgFile": "node_modules/sanitize.css/package.json",
+      "pkgFile": "node_modules/.pnpm/sanitize.css@13.0.0/node_modules/sanitize.css/package.json",
       "size": 525,
       "stats": undefined,
       "zippedSize": "3**",
@@ -155,7 +154,7 @@ exports[`measure "
         "peerDependencies": undefined,
         "version": "2.17.0",
       },
-      "pkgFile": "node_modules/date-fns/package.json",
+      "pkgFile": "node_modules/.pnpm/date-fns@2.17.0/node_modules/date-fns/package.json",
       "size": 0,
       "stats": undefined,
       "zippedSize": "0",
@@ -203,7 +202,7 @@ exports[`measure "
         "peerDependencies": undefined,
         "version": "2.17.0",
       },
-      "pkgFile": "node_modules/date-fns/package.json",
+      "pkgFile": "node_modules/.pnpm/date-fns@2.17.0/node_modules/date-fns/package.json",
       "size": 0,
       "stats": undefined,
       "zippedSize": "0",
@@ -249,7 +248,7 @@ exports[`measure "
         "peerDependencies": undefined,
         "version": "2.17.0",
       },
-      "pkgFile": "node_modules/date-fns/package.json",
+      "pkgFile": "node_modules/.pnpm/date-fns@2.17.0/node_modules/date-fns/package.json",
       "size": 869,
       "stats": undefined,
       "zippedSize": "5**",
@@ -307,7 +306,7 @@ exports[`measure "
         "peerDependencies": undefined,
         "version": "2.17.0",
       },
-      "pkgFile": "node_modules/date-fns/package.json",
+      "pkgFile": "node_modules/.pnpm/date-fns@2.17.0/node_modules/date-fns/package.json",
       "size": 2489,
       "stats": undefined,
       "zippedSize": "1***",
@@ -345,7 +344,7 @@ exports[`measure "
         "peerDependencies": undefined,
         "version": "4.17.21",
       },
-      "pkgFile": "node_modules/lodash/package.json",
+      "pkgFile": "node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/package.json",
       "size": 73500,
       "stats": undefined,
       "zippedSize": "2****",
@@ -386,7 +385,7 @@ exports[`measure "
         "peerDependencies": undefined,
         "version": "17.0.2",
       },
-      "pkgFile": "node_modules/react/package.json",
+      "pkgFile": "node_modules/.pnpm/react@17.0.2/node_modules/react/package.json",
       "size": 7974,
       "stats": undefined,
       "zippedSize": "3***",
@@ -424,7 +423,7 @@ exports[`measure "
         "peerDependencies": undefined,
         "version": "0.0.0",
       },
-      "pkgFile": "node_modules/@ambarli/alias/package.json",
+      "pkgFile": "node_modules/.pnpm/@ambarli+alias@0.0.0/node_modules/@ambarli/alias/package.json",
       "size": 637,
       "stats": undefined,
       "zippedSize": "3**",
@@ -462,7 +461,7 @@ exports[`measure "
         "peerDependencies": undefined,
         "version": "4.17.21",
       },
-      "pkgFile": "node_modules/lodash/package.json",
+      "pkgFile": "node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/package.json",
       "size": 21611,
       "stats": undefined,
       "zippedSize": "8***",
@@ -520,13 +519,13 @@ exports[`no package.json in exports 1`] = `
 "| Input | Files | Size | Percent |
 | --- | --- | --- | --- |
 | \`<bundle>.js\` |  | 308B | 100% |
-| \`↪ escalade\` | dist/index.mjs | 285B | 92.5% |"
+| \`↪ .pnpm\` | escalade@3.1.1/node_modules/escalade/dist/index.mjs | 285B | 92.5% |"
 `;
 
 exports[`parse flow type 1`] = `
 "| Input | Files | Size | Percent |
 | --- | --- | --- | --- |
 | \`<bundle>.js\` |  | 764B | 100% |
-| \`↪ @react-native/assets\` | registry.js | 142B | 18.6% |
+| \`↪ .pnpm\` | @react-native+assets@1.0.0/node_modules/@react-native/assets/registry.js | 142B | 18.6% |
 | \`↪ <import>\` |  | 13B | 1.7% |"
 `;

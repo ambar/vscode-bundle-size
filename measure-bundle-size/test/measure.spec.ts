@@ -147,6 +147,29 @@ test('no package.json in exports', async () => {
   expect(r.result!.stats).toMatchSnapshot()
 })
 
+test('external', async () => {
+  const input = `import React from 'react'`
+  const [r1] = await measure(input, __filename)
+  expect(r1.result!.size).toBeGreaterThan(0)
+
+  const [r2] = await measure(input, __filename, {external: ['react']})
+  expect(r2.result!.size).toBeLessThan(r1.result!.size)
+})
+
+test('peer external with subpath', async () => {
+  // peer-subpath-lib has peerDependencies: { "lodash": "*" }
+  // and imports 'lodash/map' (a subpath of peer dep 'lodash')
+  const [r] = await measure(
+    `import map from 'peer-subpath-lib'`,
+    null,
+    {
+      workspaceFolder: path.resolve(__dirname, 'fixtures/peer-subpath'),
+    }
+  )
+  // lodash/map should be externalized, so the bundle is nearly empty
+  expect(r.result!.size).toBeLessThan(100)
+})
+
 test('parse flow type', async () => {
   const [r] = await measure(
     `import {registerAsset} from '@react-native/assets/registry'`,

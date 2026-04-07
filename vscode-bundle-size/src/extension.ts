@@ -173,6 +173,7 @@ async function processDocument(document?: vscode.TextDocument) {
     workspaceFolder: workspaceFolder?.uri.fsPath,
     flowPattern: flowPattern ? new RegExp(flowPattern) : undefined,
     loader: config.get('loader'),
+    external: config.get('external'),
   })) {
     if (editor !== vscode.window.activeTextEditor) {
       break

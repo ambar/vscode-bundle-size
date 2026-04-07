@@ -22,13 +22,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+      - uses: pnpm/action-setup@v4
       - name: setup
-        run: |
-          corepack enable
-          yarn
+        run: pnpm install
       - name: test
-        run: |
-          yarn jest --coverage
+        run: pnpm jest --coverage
       - name: report
         uses: coverallsapp/github-action@v2
         with:

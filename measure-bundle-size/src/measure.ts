@@ -32,6 +32,9 @@ const builtinExternalPlugin: esbuild.Plugin = {
   },
 }
 const reNonRelative = /^[a-z@]/
+/** extract package name: `next/link` → `next`, `@babel/core/lib` → `@babel/core` */
+const getPkgName = (path: string) =>
+  path[0] === '@' ? path.split('/').slice(0, 2).join('/') : path.split('/')[0]
 /** ignore nested peer deps  */
 const peerExternalPlugin: esbuild.Plugin = {
   name: 'external',
@@ -58,7 +61,8 @@ const peerExternalPlugin: esbuild.Plugin = {
           pkgCache.set(cacheKey, result)
           pkg = await result
         }
-        if (pkg?.peerDependencies && args.path in pkg.peerDependencies) {
+        const pkgName = getPkgName(args.path)
+        if (pkg?.peerDependencies && pkgName in pkg.peerDependencies) {
           let externals = externalsMap.get(pkg.name)
           if (!externals) {
             externals = new Set()
@@ -162,6 +166,7 @@ const bundle = async (
     projectPkgFile,
     flowPattern,
     loader,
+    external: externalOpt,
     stats: statsOpt = false,
     cache: cacheOpt = false,
   }: {
@@ -171,6 +176,7 @@ const bundle = async (
     cache?: boolean
     flowPattern?: RegExp
     loader?: esbuild.BuildOptions['loader']
+    external?: string[]
   }
 ): Promise<BundleResult> => {
   const bundleMark = timeMark<'bundle' | 'zip' | 'analyze'>()
@@ -208,7 +214,12 @@ const bundle = async (
   bundleMark.start('bundle')
   // TODO: alert indirect deps, eg.: react-redux > react-dom
   // exclude peer deps, eg: react-router-dom > react
-  const external = rootPkg ? Object.keys({...rootPkg.peerDependencies}) : []
+  const external = [
+    ...new Set([
+      ...(rootPkg ? Object.keys({...rootPkg.peerDependencies}) : []),
+      ...(externalOpt || []),
+    ]),
+  ]
   // reduce depth of relative path in `metafile`, can't resolve directly to `node_modules` because it may not exist (or in monorepo)
   const workingDir = projectPkgFile ? path.dirname(projectPkgFile) : baseDir
   /**
@@ -365,6 +376,10 @@ type MeasureOptions = {
    * custom loader for esbuild
    */
   loader?: esbuild.BuildOptions['loader']
+  /**
+   * packages to exclude from bundle size calculation (passed to esbuild.external)
+   */
+  external?: string[]
 }
 
 /**
@@ -381,6 +396,7 @@ export async function* measureIterable(
     workspaceFolder,
     flowPattern,
     loader,
+    external,
   }: MeasureOptions = {}
 ): AsyncGenerator<MeasureResult> {
   if (debug) {
@@ -415,6 +431,7 @@ export async function* measureIterable(
     cache,
     flowPattern,
     loader,
+    external,
   }
   for (const importInfo of result.imports) {
     const statement = input.substring(importInfo.start, importInfo.end)
