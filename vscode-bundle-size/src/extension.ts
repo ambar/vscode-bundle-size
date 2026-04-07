@@ -52,7 +52,7 @@ let installPromise: ReturnType<typeof install>
 let lastWorkspaceFolder: vscode.WorkspaceFolder | void
 export function activate(_context: vscode.ExtensionContext) {
   log('Bundle Size is now active!')
-  installPromise = install(() => log('downloading esbuild on first use'))
+  installPromise = install(log)
   installPromise.catch(log)
 
   // on initial
