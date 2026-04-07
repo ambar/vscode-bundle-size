@@ -128,7 +128,7 @@
   "devDependencies": {
     "@types/node": "^20",
     "@types/vscode": "^1.53.0",
-    "measure-bundle-size": "workspace:^",
+    "measure-bundle-size": "^1.6.0",
     "pretty-format": "^27.3.1",
     "typescript": "^5.4.5"
   }
