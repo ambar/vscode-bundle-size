@@ -8,6 +8,6 @@
     "**/test/**",
     "**/*.md"
   ],
-  "npmClient": "yarn",
+  "npmClient": "pnpm",
   "conventionalCommits": true
 }
