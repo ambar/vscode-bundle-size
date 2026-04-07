@@ -12,24 +12,35 @@ function safeGet<T>(fn: AnyFunction<T>, defaultValue: T) {
   }
 }
 
-const hasEsbuild = () => safeGet(() => !!require.resolve('esbuild'), false)
+const getEsbuildVersion = () =>
+  safeGet(() => require('esbuild/package.json').version as string, '')
 const command = promisify(exec)
 
 /**
  * Get the right native executable of esbuild since it cannot be bundled
  * consider downloading: https://esbuild.github.io/getting-started/#download-a-build
  */
-export const install = async (onInstall: AnyFunction) => {
-  if (hasEsbuild()) {
+export const install = async (log: AnyFunction) => {
+  const existing = getEsbuildVersion()
+  if (existing) {
+    log(`install: esbuild@${existing} found`)
     return
   }
-  onInstall()
+  log('downloading esbuild on first use')
   let err: unknown
-  for (const cmd of ['pnpm i --prod', 'yarn --prod', 'npm i --omit=dev']) {
+  for (const cmd of [
+    'pnpm i --prod',
+    'yarn --prod',
+    'npm i --omit=dev',
+    'bun i --production',
+  ]) {
     await command(cmd, {cwd: __dirname}).catch((e) => {
+      log(`install: \`${cmd}\` failed, skipping`)
       err = e
     })
-    if (hasEsbuild()) {
+    const version = getEsbuildVersion()
+    if (version) {
+      log(`install: esbuild@${version} via \`${cmd}\``)
       return
     }
   }
